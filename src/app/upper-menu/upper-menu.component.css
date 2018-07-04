@@ -8,15 +8,22 @@
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
     z-index: 9999;
 }
+.upper-menu .menu-toggle {
+    display: inline;
+    padding: 0 40px;
+}
+.upper-menu .menu-toggle-btn i {    
+    color: #FFFFFF;
+    font-size: 25px;    
+    line-height: 40px;
+}
 .upper-menu .logo {
-    width: 100%;
-    margin: auto;
-    text-align: center;
+    display: inline;    
     font-family: 'Shadows Into Light', cursive;
-    font-size: 30px;
+    font-size: 28px;
     color: #ffffff;
     font-weight: lighter;
     line-height: 40px;
     padding: 0;
-    margin: 0;    
+    padding-left: 15px;        
 }

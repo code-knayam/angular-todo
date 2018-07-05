@@ -17,13 +17,13 @@
     font-size: 25px;    
     line-height: 40px;
 }
-.upper-menu .logo {
-    display: inline;    
+.upper-menu .logo { 
     font-family: 'Shadows Into Light', cursive;
-    font-size: 28px;
+    font-size: 23px;
     color: #ffffff;
     font-weight: lighter;
     line-height: 40px;
     padding: 0;
-    padding-left: 15px;        
+    padding-left: 15px; 
+    text-align: center;       
 }

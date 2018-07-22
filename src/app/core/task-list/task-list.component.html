@@ -6,10 +6,10 @@
 
       <div class="tasks">
         <ng-container  *ngFor="let task of tasks">
-          <div class="task" *ngIf="task.listID === taskList.listID">
+          <div class="task" *ngIf="task.listID === taskList.listID" [ngClass]="{'task-completed' : task.completedStatus}">
             <a class="checkbox">
-              <!-- <i class="fas fa-check"></i> -->
-              <i class="fas fa-caret-right"></i>
+              <i class="fas fa-check" *ngIf="task.completedStatus"></i>
+              <i class="fas fa-caret-right" *ngIf="!task.completedStatus"></i>
             </a>
             <p class="task-description">{{task.taskName}}</p>
           </div>

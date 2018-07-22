@@ -1,0 +1,70 @@
+
+.list-container{
+  padding: 20px 30px;
+}
+.list {
+  min-height: 300px;
+  background: #FFF;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 15px #CCC;
+  padding: 20px 30px;
+}
+.list h3 {
+  color: #333;
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tasks {
+  margin: 30px 0 0;
+}
+.task {
+  height: 40px;
+  padding: 5px 2px;
+  border-top: 1px solid #DDD;
+  font-size: 12px;
+}
+.task:last-child {
+  border-bottom: 1px solid #DDD;
+}
+.task .checkbox {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #DDD;
+  background: #fff;
+  line-height: 20px;
+  text-align: center;
+  padding: 0;
+}
+.checkbox i {
+  /* display: none; */
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 0;
+  line-height: 20px;
+  font-size: 12px;
+  color: #8582B6;
+}
+.task .task-description {
+  margin: 0 20px;
+  line-height: 30px;
+  display: inline-block;
+}
+
+.list .add-new-list {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+}
+.list .add-new-list a {
+  margin: 0 auto;
+  color: #AAA;
+  font-size: 100px;
+  line-height: 250px;
+}

@@ -1,3 +1,33 @@
-<p>
-  task-list works!
-</p>
+<div class="list-container row">
+
+  <div class="col-md-4" *ngFor="let taskList of taskLists">
+    <div class="list">
+      <h3 class="heading">{{taskList.listName}}</h3>
+
+      <div class="tasks">
+        <ng-container  *ngFor="let task of tasks">
+          <div class="task" *ngIf="task.listID === taskList.listID">
+            <a class="checkbox">
+              <!-- <i class="fas fa-check"></i> -->
+              <i class="fas fa-caret-right"></i>
+            </a>
+            <p class="task-description">{{task.taskName}}</p>
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="list">
+      <div class="add-new-list">
+        <a>
+          <i class="fas fa-plus"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AddTaskComponent } from './core/add-task/add-task.component';
@@ -9,6 +10,7 @@ import { CoreComponent } from './core/core.component';
 import { LandingComponent } from './core/landing/landing.component';
 import { ProfileComponent } from './core/profile/profile.component';
 import { TaskListComponent } from './core/task-list/task-list.component';
+import { TasksService } from './core/tasks.service';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -24,9 +26,12 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    TasksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

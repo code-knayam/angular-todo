@@ -4,9 +4,8 @@
 }
 .list {
   min-height: 300px;
-  background: #FFF;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  background: linear-gradient(#FFF, rgba(133,130,182, 0.2));
+  margin: 20px;
   box-shadow: 0 2px 15px #CCC;
   padding: 20px 30px;
 }
@@ -16,51 +15,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.tasks {
-  margin: 30px 0 0;
-}
-.task {
-  height: 40px;
-  padding: 5px 2px;
-  border-top: 1px solid #DDD;
-  font-size: 12px;
-}
-.task:last-child {
-  border-bottom: 1px solid #DDD;
-}
-.task .checkbox {
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  border: 1px solid #DDD;
-  background: #fff;
-  line-height: 20px;
-  text-align: center;
-  padding: 0;
-  color: #8582B6;
-  font-size: 12px;
-}
-.checkbox i {
-  /* display: none; */
-  height: 20px;
-  width: 20px;
-  padding: 0;
-  margin: 0;
-}
-.task .task-description {
-  margin: 0 20px;
-  line-height: 30px;
-  display: inline-block;
-}
-
-.task-completed .checkbox {
-  background: #8582B6;
-  border: none;
-  color: #FFF;
-}
-.task-completed .task-description {
-  text-decoration: line-through;
 }
 
 .list .add-new-list {

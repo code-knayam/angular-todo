@@ -1,4 +1,4 @@
-import * as CONSTANTS from '../CONSTANTS';
+
 
 export class Task {
   public taskID: string;

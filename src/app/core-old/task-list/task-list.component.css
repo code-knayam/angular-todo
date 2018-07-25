@@ -8,6 +8,7 @@
   margin: 20px;
   box-shadow: 0 2px 15px #CCC;
   padding: 20px 30px;
+  border-radius: 10px;
 }
 .list h3 {
   color: #333;

@@ -1,0 +1,9 @@
+.menu {
+  height: 60px;
+  width: 100%;
+  position: absolute;
+  background: #FFF;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -5px 5px #CCC;
+}

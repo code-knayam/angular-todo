@@ -1,7 +1,7 @@
 .menu {
   height: 60px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   background: #FFF;
   bottom: 0;
   left: 0;

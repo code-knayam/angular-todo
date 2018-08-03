@@ -10,6 +10,7 @@ export class AddTaskComponent implements OnInit {
 
   addTaskForm: FormGroup;
   showFormFlag = false;
+  showFormOptions = false;
 
   constructor(private fb: FormBuilder) { }
 
@@ -33,5 +34,9 @@ export class AddTaskComponent implements OnInit {
 
   onCloseBtn() {
     this.showFormFlag = !this.showFormFlag;
+  }
+
+  onToggleFormOptions() {
+    this.showFormOptions = !this.showFormOptions;
   }
 }

@@ -12,14 +12,14 @@
     <div class="add-task-form-container" [ngClass]="{'active-form': showFormFlag}">
       <form [formGroup]="addTaskForm" (submit)="onSubmitAddTask()">
         <div class="form-group">
-          <input type="text" name="taskName" class="form-control" formControlName="taskName" placeholder="New Task">
+          <input type="text" name="taskName" class="form-control" formControlName="taskName" placeholder="New Task" autocomplete="off">
         </div>
 
         <div class="form-group">
           <a class="toggle-form-options-btn" (click)="onToggleFormOptions()">
             <i class="fas fa-plus-circle" [ngClass]="{'show-form-options': showFormOptions}"></i>
           </a>
-          <button type="submit" class="save-form-btn">Save</button>
+          <button type="submit" [disabled]="!addTaskForm.valid" class="save-form-btn">Save</button>
         </div>
 
       </form>

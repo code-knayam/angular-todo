@@ -25,15 +25,16 @@ export class AddTaskComponent implements OnInit {
   }
 
   onAddTaskBtn() {
-    this.showFormFlag = !this.showFormFlag;
+    this.showFormFlag = true;
   }
 
   onSubmitAddTask() {
     console.log(this.addTaskForm);
+    this.showFormFlag = false;
   }
 
   onCloseBtn() {
-    this.showFormFlag = !this.showFormFlag;
+    this.showFormFlag = false;
   }
 
   onToggleFormOptions() {

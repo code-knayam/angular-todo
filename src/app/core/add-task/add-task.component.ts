@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -12,10 +13,16 @@ export class AddTaskComponent implements OnInit {
   showFormFlag = false;
   showFormOptions = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private taskService: TaskService) {
+  }
 
   ngOnInit() {
-    this.initForm();
+    this.initForm();    this.taskService.addTaskFormFlag.subscribe(
+      (showFormFlag: boolean) => {
+        this.showFormFlag = showFormFlag;
+      }
+    );
   }
 
   initForm() {
@@ -24,17 +31,15 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  onAddTaskBtn() {
-    this.showFormFlag = true;
-  }
-
   onSubmitAddTask() {
     console.log(this.addTaskForm);
     this.showFormFlag = false;
+    this.showFormOptions = false;
   }
 
   onCloseBtn() {
     this.showFormFlag = false;
+    this.showFormOptions = false;
   }
 
   onToggleFormOptions() {

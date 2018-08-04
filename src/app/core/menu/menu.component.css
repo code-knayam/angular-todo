@@ -7,3 +7,29 @@
   left: 0;
   box-shadow: 0 -2px 5px #CCC;
 }
+.add-task-btn-container {
+  position: fixed;
+  bottom: 35px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  color: #FFF;
+}
+
+.add-task-btn  {
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  line-height: 50px;
+  color: #FFF;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  background: rgb(111, 103, 255);
+  border-radius: 25px;
+}
+.add-task-btn i {
+  margin-right: 20px;
+}

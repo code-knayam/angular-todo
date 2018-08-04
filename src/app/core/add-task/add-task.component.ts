@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TaskService } from '../task.service';
+import { Task } from './../task.model';
 
 @Component({
   selector: 'app-add-task',
@@ -33,8 +34,15 @@ export class AddTaskComponent implements OnInit {
 
   onSubmitAddTask() {
     console.log(this.addTaskForm);
+
+    // hiding add task form
     this.showFormFlag = false;
     this.showFormOptions = false;
+
+    const taskName = this.addTaskForm.value['taskName'];
+
+    const newTask = new Task(taskName, new Date());
+    this.taskService.saveNewTask(newTask);
   }
 
   onCloseBtn() {

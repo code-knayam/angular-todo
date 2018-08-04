@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import {ToastModule} from 'ng6-toastr';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';

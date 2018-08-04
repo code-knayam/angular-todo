@@ -10,7 +10,7 @@
         <a class="toggle-form-options-btn" (click)="onToggleFormOptions()">
           <i class="fas fa-plus-circle" [ngClass]="{'show-form-options': showFormOptions}"></i>
         </a>
-        <button type="submit" [disabled]="addTaskForm.invalid" class="save-form-btn" [ngClass]="{'save-form-btn-disabled': addTaskForm.invalid}">Save</button>
+        <button [disabled]="addTaskForm.invalid" class="save-form-btn" [ngClass]="{'save-form-btn-disabled': addTaskForm.invalid}">Save</button>
       </div>
 
     </form>

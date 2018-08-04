@@ -1,4 +1,5 @@
 import { Subject } from 'rxjs';
+import { Task } from './task.model';
 
 export class TaskService {
 
@@ -6,5 +7,9 @@ export class TaskService {
 
   showAddTaskForm() {
     this.addTaskFormFlag.next(true);
+  }
+
+  saveNewTask(newTask: Task) {
+    console.log(newTask);
   }
 }

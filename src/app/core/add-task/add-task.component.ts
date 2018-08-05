@@ -35,22 +35,23 @@ export class AddTaskComponent implements OnInit {
   onSubmitAddTask() {
     console.log(this.addTaskForm);
 
-    // hiding add task form
-    this.showFormFlag = false;
-    this.showFormOptions = false;
-
     const taskName = this.addTaskForm.value['taskName'];
-
     const newTask = new Task(taskName, new Date());
     this.taskService.saveNewTask(newTask);
+    this.resetAddTaskForm();
   }
 
   onCloseBtn() {
-    this.showFormFlag = false;
-    this.showFormOptions = false;
+    this.resetAddTaskForm();
   }
 
   onToggleFormOptions() {
     this.showFormOptions = !this.showFormOptions;
+  }
+
+  resetAddTaskForm() {
+    this.addTaskForm.reset();
+    this.showFormFlag = false;
+    this.showFormOptions = false;
   }
 }

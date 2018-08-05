@@ -62,6 +62,8 @@
   color: rgb(111, 103, 255);
   font-size: 18px;
   float: right;
+  background: none;
+  border: none;
 }
 .add-task-form-container .form-group .save-form-btn-disabled {
   color: #999;

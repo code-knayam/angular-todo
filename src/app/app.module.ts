@@ -11,6 +11,8 @@ import { TaskListComponent } from './core/task-list/task-list.component';
 import { TaskService } from './core/task.service';
 import { TaskListItemComponent } from './core/task-list/task-list-item/task-list-item.component';
 import { SharedService } from './core/shared.service';
+import { MenuContainerComponent } from './core/menu/menu-container/menu-container.component';
+import { TaskMenuContainerComponent } from './core/menu/task-menu-container/task-menu-container.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { SharedService } from './core/shared.service';
     MenuComponent,
     AddTaskComponent,
     TaskListComponent,
-    TaskListItemComponent  ],
+    TaskListItemComponent,
+    MenuContainerComponent,
+    TaskMenuContainerComponent  ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

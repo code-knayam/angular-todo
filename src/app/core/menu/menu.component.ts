@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../task.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,13 +8,21 @@ import { TaskService } from '../task.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private taskService: TaskService) { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
   }
 
   onAddTaskBtn() {
-    this.taskService.showAddTaskForm();
+    this.sharedService.showAddTaskForm();
+  }
+
+  onMenuToggleBtn() {
+
+  }
+
+  onTaskMenuToggleBtn() {
+
   }
 
 }

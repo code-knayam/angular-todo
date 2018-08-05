@@ -10,6 +10,7 @@ import { AddTaskComponent } from './core/add-task/add-task.component';
 import { TaskListComponent } from './core/task-list/task-list.component';
 import { TaskService } from './core/task.service';
 import { TaskListItemComponent } from './core/task-list/task-list-item/task-list-item.component';
+import { SharedService } from './core/shared.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TaskListItemComponent } from './core/task-list/task-list-item/task-list
     AppRoutingModule
   ],
   providers: [
-    TaskService
+    TaskService,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })

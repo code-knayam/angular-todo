@@ -7,17 +7,18 @@
   left: 0;
   box-shadow: 0 -2px 5px #CCC;
 }
+
 .add-task-btn-container {
-  position: fixed;
-  bottom: 35px;
-  left: 0;
+  position: absolute;
+  top: -25px;
+  height: 50px;
   width: 100%;
   text-align: center;
   padding: 0;
   color: #FFF;
 }
 
-.add-task-btn  {
+.add-task-btn-container .add-task-btn  {
   display: inline-block;
   width: 70%;
   height: 100%;
@@ -30,6 +31,34 @@
   background: rgb(111, 103, 255);
   border-radius: 25px;
 }
-.add-task-btn i {
+.add-task-btn-container .add-task-btn i {
   margin-right: 20px;
+}
+
+.menu-toggle-btn-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 20px;
+}
+.menu-toggle-btn-container .menu-toggle-btn {
+  cursor: pointer;
+}
+
+.task-menu-toggle-btn-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 20px;
+}
+.task-menu-toggle-btn-container .task-menu-toggle-btn{
+  cursor: pointer;
 }

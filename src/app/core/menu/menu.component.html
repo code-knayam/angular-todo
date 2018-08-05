@@ -1,12 +1,23 @@
 <div class="menu">
 
-  <div class="add-task-btn-container">
-    <a class="add-task-btn" (click)="onAddTaskBtn()">
-      <i class="fas fa-plus"></i>
-      Add a new Task
+
+
+  <div class="menu-toggle-btn-container">
+    <a class="menu-toggle-btn" (click)="onMenuToggleBtn()">
+      <i class="fas fa-bars"></i>
     </a>
   </div>
 
-  <i class="fas fa-bars"></i>
-  <i class="fas fa-ellipsis-v"></i>
+  <div class="task-menu-toggle-btn-container">
+    <a class="task-menu-toggle-btn" (click)="onTaskMenuToggleBtn()">
+      <i class="fas fa-ellipsis-v"></i>
+    </a>
+  </div>
+
+  <div class="add-task-btn-container">
+      <a class="add-task-btn" (click)="onAddTaskBtn()">
+        <i class="fas fa-plus"></i>
+        Add a new Task
+      </a>
+    </div>
 </div>

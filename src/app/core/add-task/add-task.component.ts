@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { Task } from './../task.model';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-add-task',
@@ -15,11 +16,11 @@ export class AddTaskComponent implements OnInit {
   showFormOptions = false;
 
   constructor(private fb: FormBuilder,
-    private taskService: TaskService) {
+    private taskService: TaskService, private sharedService: SharedService) {
   }
 
   ngOnInit() {
-    this.initForm();    this.taskService.addTaskFormFlag.subscribe(
+    this.initForm();    this.sharedService.addTaskFormFlag.subscribe(
       (showFormFlag: boolean) => {
         this.showFormFlag = showFormFlag;
       }

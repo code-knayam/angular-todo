@@ -37,7 +37,7 @@ export class AddTaskComponent implements OnInit {
     console.log(this.addTaskForm);
 
     const taskName = this.addTaskForm.value['taskName'];
-    const newTask = new Task(taskName, new Date());
+    const newTask = new Task(taskName);
     this.taskService.saveNewTask(newTask);
     this.resetAddTaskForm();
   }

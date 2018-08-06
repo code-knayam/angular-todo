@@ -1,9 +1,11 @@
 export class Task {
   name: string;
-  date: Date;
+  completed: boolean;
+  dateCreated: Date;
 
-  constructor(name: string, date: Date) {
+  constructor(name: string) {
     this.name = name;
-    this.date = date;
+    this.completed = false;
+    this.dateCreated = new Date();
   }
 }

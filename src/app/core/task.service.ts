@@ -4,7 +4,9 @@ import { Task } from './task.model';
 export class TaskService {
 
   taskSubject = new Subject<Task[]>();
-  tasks: Task[] = [];
+  tasks: Task[] = [
+    new Task('default task')
+  ];
 
   saveNewTask(newTask: Task) {
     console.log(newTask);

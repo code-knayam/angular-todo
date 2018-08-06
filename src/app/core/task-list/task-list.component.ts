@@ -24,4 +24,8 @@ export class TaskListComponent implements OnInit {
     );
   }
 
+  onToggleCompletedTask() {
+    console.log('toggle');
+  }
+
 }

@@ -11,7 +11,7 @@
       "total_tasks": 4,
       "total_pending_tasks": 2,
       "total_completed_tasks": 2,
-      "pending_tasks_arr": [
+      "tasks_arr": [
         {
           "task_id": "1532261746",
           "task_name": "Task 1",
@@ -25,9 +25,7 @@
           "task_description": "Description",
           "task_list_id": "L1",
           "task_completed_status": false
-        }
-      ],
-      "completed_tasks_arr": [
+        },
         {
           "task_id": "1532275070",
           "task_name": "Task 3",

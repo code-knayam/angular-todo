@@ -20,7 +20,8 @@ export class AddTaskComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initForm();    this.sharedService.addTaskFormFlag.subscribe(
+    this.initForm();
+    this.sharedService.addTaskFormFlag.subscribe(
       (showFormFlag: boolean) => {
         this.showFormFlag = showFormFlag;
       }

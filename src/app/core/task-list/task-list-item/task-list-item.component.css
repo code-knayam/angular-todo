@@ -14,3 +14,10 @@
 .task .task-description {
   display: inline-block;
 }
+.task-completed .task-icon {
+  color: #8582B6;
+}
+.task-completed .task-description {
+  text-decoration: line-through;
+  opacity: 0.7;
+}

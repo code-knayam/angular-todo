@@ -4,8 +4,12 @@ import { Task } from './task.model';
 export class TaskService {
 
   taskSubject = new Subject<Task[]>();
-  tasks: Task[] = [
-    new Task('default task')
+  private tasks: Task[] = [
+    new Task('default task', false)
+  ];
+
+  private completedTasks: Task[] = [
+    new Task('default completed task', true)
   ];
 
   saveNewTask(newTask: Task) {
@@ -15,6 +19,11 @@ export class TaskService {
   }
 
   getTasks() {
-    return this.tasks;
+    return this.tasks.slice();
   }
+
+  getCompletedTasks() {
+    return this.completedTasks.slice();
+  }
+
 }

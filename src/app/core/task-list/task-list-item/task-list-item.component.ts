@@ -15,4 +15,8 @@ export class TaskListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  onToggleTaskCompleted() {
+    this.task.completed = !this.task.completed;
+  }
+
 }

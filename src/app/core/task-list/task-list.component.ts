@@ -10,11 +10,13 @@ import { TaskService } from '../task.service';
 export class TaskListComponent implements OnInit {
 
   tasks: Task[];
+  completedTasks: Task[];
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
     this.tasks = this.taskService.getTasks();
+    this.completedTasks = this.taskService.getCompletedTasks();
     this.taskService.taskSubject.subscribe(
       (tasks: Task[]) => {
         this.tasks = tasks;

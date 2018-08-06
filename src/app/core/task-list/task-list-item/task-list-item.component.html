@@ -1,7 +1,7 @@
 <div class="task" [ngClass]="{'task-completed': task.completed}">
   <div class="task-icon">
     <i [ngClass]="{'far fa-circle': !task.completed,
-  'fas fa-check': task.completed}"></i>
+  'fas fa-check': task.completed}" (click)="onToggleTaskCompleted()"></i>
   </div>
   <div class="task-description">
     <p class="task-name">{{task.name}}</p>

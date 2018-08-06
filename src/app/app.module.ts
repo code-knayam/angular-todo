@@ -23,7 +23,7 @@ import { TaskMenuContainerComponent } from './core/menu/task-menu-container/task
     TaskListComponent,
     TaskListItemComponent,
     MenuContainerComponent,
-    TaskMenuContainerComponent  ],
+    TaskMenuContainerComponent ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

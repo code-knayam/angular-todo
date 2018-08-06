@@ -10,3 +10,29 @@
 .task-heading h3 {
   line-height: 100px;
 }
+
+.task-container {
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+.completed-task-container {
+  width: 100%;
+  margin-top: 50px;
+}
+.completed-task-container .completed-task-heading {
+  height: 50px;
+  padding-left: 65px;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.075);
+  border-top: 1px solid rgba(1, 1, 1, 0.075);
+}
+.completed-task-container .completed-task-heading a {
+  font-size: 17px;
+  line-height: 50px;
+  color: #444;
+}
+.completed-task-container .completed-task-heading a i {
+  float: right;
+  margin-right: 50px;
+  line-height: 50px;
+}

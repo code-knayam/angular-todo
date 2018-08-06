@@ -4,3 +4,14 @@
 <div class="task-container">
   <app-task-list-item *ngFor="let task of tasks" [task]="task"></app-task-list-item>
 </div>
+<div class="completed-task-container">
+  <div class="completed-task-heading">
+    <a>
+      Completed Tasks (3)
+      <i class="fas fa-angle-down"></i>
+    </a>
+  </div>
+  <div class="completed-tasks">
+    <app-task-list-item *ngFor="let task of tasks" [task]="task"></app-task-list-item>
+  </div>
+</div>

@@ -8,7 +8,7 @@ export class TaskService {
 
   saveNewTask(newTask: Task) {
     console.log(newTask);
-    this.tasks.push(newTask);
+    this.tasks.unshift(newTask);
     this.taskSubject.next(this.tasks);
   }
 

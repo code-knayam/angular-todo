@@ -5,7 +5,7 @@
   height: 100vh;
   width: 100%;
   background: rgba(1, 1, 1, 0.3);
-  transition: .3s;
+  transition: .5s;
   z-index: 5;
 }
 .active-task-container {

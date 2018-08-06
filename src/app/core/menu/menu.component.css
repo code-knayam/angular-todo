@@ -30,6 +30,7 @@
   text-decoration: none;
   background: rgb(111, 103, 255);
   border-radius: 25px;
+  box-shadow: 0 3px 5px #AAA;
 }
 .add-task-btn-container .add-task-btn i {
   margin-right: 20px;

@@ -14,8 +14,11 @@
 .task .task-description {
   display: inline-block;
 }
+.task-completed {
+  background: rgba(200, 200, 200, 0.1);
+}
 .task-completed .task-icon {
-  color: #8582B6;
+  color: rgb(111, 103, 255);
 }
 .task-completed .task-description {
   text-decoration: line-through;

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { TaskListItemComponent } from './core/task-list/task-list-item/task-list
 import { SharedService } from './core/shared.service';
 import { MenuContainerComponent } from './core/menu/menu-container/menu-container.component';
 import { TaskMenuContainerComponent } from './core/menu/task-menu-container/task-menu-container.component';
+import { UtilityService } from './core/utility.service';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,13 @@ import { TaskMenuContainerComponent } from './core/menu/task-menu-container/task
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     TaskService,
-    SharedService
+    SharedService,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })

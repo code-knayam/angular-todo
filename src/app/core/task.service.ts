@@ -11,7 +11,7 @@ export class TaskService {
   private tasks: Task[] = [];
 
   private completedTasks: Task[] = [
-    new Task('default completed task', true, new Date())
+    new Task('randomID', 'default completed task', true, new Date())
   ];
 
   constructor(private utilityService: UtilityService) { }
@@ -21,7 +21,7 @@ export class TaskService {
       (response: any) => {
         response.forEach(taskObject => {
           console.log(taskObject);
-          const newTask = new Task(taskObject.task_name, taskObject.task_completed, taskObject.date_created);
+          const newTask = new Task(taskObject.task_id, taskObject.task_name, taskObject.task_completed, taskObject.date_created);
           this.tasks.push(newTask);
         });
         this.taskSubject.next(this.tasks);

@@ -29,11 +29,7 @@ export class UtilityService {
   }
 
   fetchUserTasks(userId: string, listId: string) {
-    this.http.get(this.GET_USER_TASKS_API + '?userid=' + userId + '&listid=' + listId).subscribe(
-      (response) => {
-        console.log(response);
-      }
-    );
+    return this.http.get(this.GET_USER_TASKS_API + '?userid=' + userId + '&listid=' + listId);
   }
 
 }

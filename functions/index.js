@@ -31,6 +31,11 @@ exports.getUserLists = functions.https.onRequest(
   (req, res) => {
     var userId = req.query.userid;
     var db = admin.firestore();
+
+    res.header('Content-Type', 'application/json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     db.collection('user-data').doc(userId).collection('lists_arr').get().then(
       (querySnapshot) => {
         var data = [];
@@ -54,6 +59,11 @@ exports.getUserTasks = functions.https.onRequest(
     var userId = req.query.userid;
     var listId = req.query.listid;
     var db = admin.firestore();
+
+    res.header('Content-Type', 'application/json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     db.collection('user-data').doc(userId).collection('lists_arr').doc(listId).collection('tasks_arr').get().then(
       (querySnapshot) => {
         var data = [];

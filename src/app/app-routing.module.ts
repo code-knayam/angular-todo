@@ -1,18 +1,11 @@
 import { Routes, RouterModule  } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CoreComponent } from './core/core.component';
-
-
-
-// const appRoutes: Routes = [
-//   {path: 'overview', component: LandingComponent},
-//   {path: 'addTask', component: AddTaskComponent},
-//   {path: 'taskList', component: TaskListComponent},
-//   {path: 'profile', component: ProfileComponent}
-// ];
+import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
-  {path: '', component: CoreComponent }
+  {path: '', component: CoreComponent },
+  {path: 'auth', component: AuthComponent }
 ];
 
 @NgModule({

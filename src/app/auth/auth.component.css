@@ -1,0 +1,26 @@
+.landing {
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  padding: 10px 35px;
+  padding-top: 150px;
+}
+.landing img {
+  margin: 5px 0 20px;
+}
+.landing h2 {
+  margin: 20px 0 ;
+  font-size: 27px;
+}
+.landing p {
+  margin: 20px 0 50px;
+  font-size: 16px;
+  color: #444;
+}
+.landing .get-started-btn {
+  background: rgb(111, 103, 255);
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 4px;
+  font-size: 18px;
+}

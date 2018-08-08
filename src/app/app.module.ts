@@ -15,6 +15,7 @@ import { SharedService } from './core/shared.service';
 import { MenuContainerComponent } from './core/menu/menu-container/menu-container.component';
 import { TaskMenuContainerComponent } from './core/menu/task-menu-container/task-menu-container.component';
 import { UtilityService } from './core/utility.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UtilityService } from './core/utility.service';
     TaskListComponent,
     TaskListItemComponent,
     MenuContainerComponent,
-    TaskMenuContainerComponent ],
+    TaskMenuContainerComponent,
+    AuthComponent ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

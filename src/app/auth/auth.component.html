@@ -4,7 +4,22 @@
 <img src="../../assets/Logo.png" alt=""> -->
 <div class="landing">
   <img src="../../assets/Logo@2x.png" alt="">
-  <h2>Welcome to Angular Todo</h2>
+  <h2 id="title">Welcome to Angular Todo</h2>
   <p>Keep track of important things you need to get done in one place.</p>
-  <a href="" class="get-started-btn">Get Started</a>
+  <a class="get-started-btn" (click)="getStartedWithEmail()">
+    <span class="icon">
+      <i class="far fa-envelope"></i>
+    </span>
+    <span class="label">
+      Get Started with Email
+    </span>
+  </a>
+  <a class="get-started-btn" (click)="getStartedWithGoogle()">
+    <span class="icon">
+      <i class="fab fa-google"></i>
+    </span>
+    <span class="label">
+      Get Started with Google
+    </span>
+  </a>
 </div>

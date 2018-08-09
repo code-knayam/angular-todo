@@ -16,6 +16,7 @@ import { MenuContainerComponent } from './core/menu/menu-container/menu-containe
 import { TaskMenuContainerComponent } from './core/menu/task-menu-container/task-menu-container.component';
 import { UtilityService } from './core/utility.service';
 import { AuthComponent } from './auth/auth.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthComponent } from './auth/auth.component';
   providers: [
     TaskService,
     SharedService,
-    UtilityService
+    UtilityService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

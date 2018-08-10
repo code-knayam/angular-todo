@@ -16,7 +16,7 @@ export class AuthService {
 
   signInUser() {
     const provider = new firebase.auth.GoogleAuthProvider();
-
+    
     firebase.auth().signInWithPopup(provider).then(
       (result) => {
         console.log(result);

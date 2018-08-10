@@ -18,6 +18,8 @@ import { UtilityService } from './core/utility.service';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './auth/auth.service';
 import { UserService } from './core/user.service';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerService } from './spinner/spinner.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { UserService } from './core/user.service';
     TaskListItemComponent,
     MenuContainerComponent,
     TaskMenuContainerComponent,
-    AuthComponent ],
+    AuthComponent,
+    SpinnerComponent ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
@@ -41,7 +44,8 @@ import { UserService } from './core/user.service';
     SharedService,
     UtilityService,
     AuthService,
-    UserService
+    UserService,
+    SpinnerService
   ],
   bootstrap: [AppComponent]
 })

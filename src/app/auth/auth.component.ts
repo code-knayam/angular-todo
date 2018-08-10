@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { AuthService } from './auth.service';
+import { SpinnerService } from '../spinner/spinner.service';
 
 declare var googleyolo: any;
 
@@ -12,13 +13,14 @@ export class AuthComponent implements OnInit {
 
   private clientId = '258304393244-adqi0as8743c4f8dtvnls86h3nom39e4.apps.googleusercontent.com';
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private spinnerService: SpinnerService) {
 
   }
 
   ngOnInit() { }
 
   getStartedWithGoogle() {
+    this.spinnerService.showSpinner();
     this.authService.signInUser();
   }
 

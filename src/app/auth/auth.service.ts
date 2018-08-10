@@ -1,16 +1,30 @@
 import * as firebase from 'firebase';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { User } from '../core/user.model';
+import { UserService } from '../core/user.service';
+
+@Injectable()
 export class AuthService {
+
+  private token: string;
+
+  constructor(private userService: UserService, private router: Router) {
+
+  }
 
   signInUser() {
     const provider = new firebase.auth.GoogleAuthProvider();
 
     firebase.auth().signInWithPopup(provider).then(
       (result) => {
-        // const token = result.credential.accessToken;
-        const user = result.user;
         console.log(result);
-        console.log(result.user);
+
+        this.token = result.credential.idToken;
+        const newUser = new User(result.user.displayName, result.user.email, result.user.photoURL);
+        this.userService.setUser(newUser);
+        this.router.navigate(['/']);
       }
     ).catch(function(error) {
       // Handle Errors here.
@@ -22,6 +36,9 @@ export class AuthService {
       const credential = error.credential;
       // ...
     });
+  }
 
+  isUserLoggedIn() {
+    return this.token != null;
   }
 }

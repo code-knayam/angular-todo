@@ -1,8 +1,6 @@
-import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { SpinnerService } from '../spinner/spinner.service';
-
-declare var googleyolo: any;
 
 @Component({
   selector: 'app-auth',

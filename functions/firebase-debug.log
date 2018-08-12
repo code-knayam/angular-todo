@@ -1,0 +1,165 @@
+[debug] [2018-08-11T07:17:09.484Z] ----------------------------------------------------------------------
+[debug] [2018-08-11T07:17:09.486Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-08-11T07:17:09.486Z] CLI Version:   4.0.3
+[debug] [2018-08-11T07:17:09.486Z] Platform:      darwin
+[debug] [2018-08-11T07:17:09.486Z] Node Version:  v8.11.3
+[debug] [2018-08-11T07:17:09.487Z] Time:          Sat Aug 11 2018 12:47:09 GMT+0530 (IST)
+[debug] [2018-08-11T07:17:09.487Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-11T07:17:09.498Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-11T07:17:09.498Z] > authorizing via signed-in user
+[debug] [2018-08-11T07:17:09.501Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/angulartodo-af85b  
+  
+ Sat Aug 11 2018 12:47:09 GMT+0530 (IST)
+[debug] [2018-08-11T07:17:16.228Z] ----------------------------------------------------------------------
+[debug] [2018-08-11T07:17:16.231Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2018-08-11T07:17:16.231Z] CLI Version:   4.0.3
+[debug] [2018-08-11T07:17:16.231Z] Platform:      darwin
+[debug] [2018-08-11T07:17:16.231Z] Node Version:  v8.11.3
+[debug] [2018-08-11T07:17:16.232Z] Time:          Sat Aug 11 2018 12:47:16 GMT+0530 (IST)
+[debug] [2018-08-11T07:17:16.232Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-11T07:17:16.244Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-11T07:17:16.244Z] > authorizing via signed-in user
+[debug] [2018-08-11T07:17:16.246Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/angulartodo-af85b  
+  
+ Sat Aug 11 2018 12:47:16 GMT+0530 (IST)
+[debug] [2018-08-11T07:17:26.621Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-11T07:17:26.622Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/angulartodo-af85b/tokens  
+  
+ Sat Aug 11 2018 12:47:26 GMT+0530 (IST)
+[debug] [2018-08-11T07:17:30.430Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-11T07:17:30.431Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/angulartodo-af85b  
+  
+ Sat Aug 11 2018 12:47:30 GMT+0530 (IST)
+[debug] [2018-08-11T07:17:32.842Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/mayankjain/angular-todo'...
+[info] 
+[debug] [2018-08-11T07:17:33.994Z] Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/logs'
+    at Object.fs.mkdirSync (fs.js:885:18)
+    at Object.assertLogsPath (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/emulator/logs.js:65:10)
+    at new Controller (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/cli/controller.js:77:32)
+    at FunctionsEmulator.start (/usr/local/lib/node_modules/firebase-tools/lib/functionsEmulator.js:113:21)
+    at Object.start (/usr/local/lib/node_modules/firebase-tools/lib/serve/functions.js:9:29)
+    at /usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:17:21
+    at arrayMap (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:639:23)
+    at Function.map (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:9554:14)
+    at _serve (/usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:15:7)
+    at Command._action (/usr/local/lib/node_modules/firebase-tools/commands/serve.js:48:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-08-12T09:15:56.018Z] ----------------------------------------------------------------------
+[debug] [2018-08-12T09:15:56.021Z] Command:       /usr/local/bin/node /usr/local/bin/firebase functions:shell
+[debug] [2018-08-12T09:15:56.021Z] CLI Version:   4.0.3
+[debug] [2018-08-12T09:15:56.021Z] Platform:      darwin
+[debug] [2018-08-12T09:15:56.021Z] Node Version:  v8.11.3
+[debug] [2018-08-12T09:15:56.022Z] Time:          Sun Aug 12 2018 14:45:56 GMT+0530 (IST)
+[debug] [2018-08-12T09:15:56.022Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-12T09:15:56.036Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-12T09:15:56.037Z] > authorizing via signed-in user
+[debug] [2018-08-12T09:15:56.039Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/angulartodo-af85b  
+  
+ Sun Aug 12 2018 14:45:56 GMT+0530 (IST)
+[debug] [2018-08-12T09:15:57.692Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-12T09:15:57.694Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/angulartodo-af85b/tokens  
+  
+ Sun Aug 12 2018 14:45:57 GMT+0530 (IST)
+[debug] [2018-08-12T09:15:58.721Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-12T09:15:59.772Z] Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/logs'
+    at Object.fs.mkdirSync (fs.js:885:18)
+    at Object.assertLogsPath (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/emulator/logs.js:65:10)
+    at new Controller (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/cli/controller.js:77:32)
+    at FunctionsEmulator.start (/usr/local/lib/node_modules/firebase-tools/lib/functionsEmulator.js:113:21)
+    at Command.module.exports [as _action] (/usr/local/lib/node_modules/firebase-tools/lib/functionsShellCommandAction.js:18:6)
+    at /usr/local/lib/node_modules/firebase-tools/lib/command.js:200:29
+    at <anonymous>
+    at process._tickDomainCallback (internal/process/next_tick.js:228:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-08-12T09:16:35.829Z] ----------------------------------------------------------------------
+[debug] [2018-08-12T09:16:35.832Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2018-08-12T09:16:35.832Z] CLI Version:   4.0.3
+[debug] [2018-08-12T09:16:35.832Z] Platform:      darwin
+[debug] [2018-08-12T09:16:35.832Z] Node Version:  v8.11.3
+[debug] [2018-08-12T09:16:35.833Z] Time:          Sun Aug 12 2018 14:46:35 GMT+0530 (IST)
+[debug] [2018-08-12T09:16:35.833Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-12T09:16:35.844Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-12T09:16:35.845Z] > authorizing via signed-in user
+[debug] [2018-08-12T09:16:35.847Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-12T09:16:35.847Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/DclhgbDtpkp8lUmQBeUTUT652NOW47f9VgnT5-xG2Wk',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Aug 12 2018 14:46:35 GMT+0530 (IST)
+[debug] [2018-08-12T09:16:36.124Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-12T09:16:36.133Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/angulartodo-af85b  
+  
+ Sun Aug 12 2018 14:46:36 GMT+0530 (IST)
+[debug] [2018-08-12T09:16:39.052Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-12T09:16:39.053Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/angulartodo-af85b/tokens  
+  
+ Sun Aug 12 2018 14:46:39 GMT+0530 (IST)
+[debug] [2018-08-12T09:16:40.025Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-12T09:16:40.026Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/angulartodo-af85b  
+  
+ Sun Aug 12 2018 14:46:40 GMT+0530 (IST)
+[debug] [2018-08-12T09:16:41.880Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/mayankjain/angular-todo'...
+[info] 
+[debug] [2018-08-12T09:16:42.849Z] Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/logs'
+    at Object.fs.mkdirSync (fs.js:885:18)
+    at Object.assertLogsPath (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/emulator/logs.js:65:10)
+    at new Controller (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/cli/controller.js:77:32)
+    at FunctionsEmulator.start (/usr/local/lib/node_modules/firebase-tools/lib/functionsEmulator.js:113:21)
+    at Object.start (/usr/local/lib/node_modules/firebase-tools/lib/serve/functions.js:9:29)
+    at /usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:17:21
+    at arrayMap (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:639:23)
+    at Function.map (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:9554:14)
+    at _serve (/usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:15:7)
+    at Command._action (/usr/local/lib/node_modules/firebase-tools/commands/serve.js:48:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-08-12T09:32:48.791Z] ----------------------------------------------------------------------
+[debug] [2018-08-12T09:32:48.794Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2018-08-12T09:32:48.794Z] CLI Version:   4.0.3
+[debug] [2018-08-12T09:32:48.794Z] Platform:      darwin
+[debug] [2018-08-12T09:32:48.794Z] Node Version:  v8.11.3
+[debug] [2018-08-12T09:32:48.795Z] Time:          Sun Aug 12 2018 15:02:48 GMT+0530 (IST)
+[debug] [2018-08-12T09:32:48.795Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-12T09:32:48.808Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-12T09:32:48.808Z] > authorizing via signed-in user
+[debug] [2018-08-12T09:32:48.811Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/angulartodo-af85b  
+  
+ Sun Aug 12 2018 15:02:48 GMT+0530 (IST)
+[debug] [2018-08-12T09:32:50.225Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-12T09:32:50.226Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/angulartodo-af85b/tokens  
+  
+ Sun Aug 12 2018 15:02:50 GMT+0530 (IST)
+[debug] [2018-08-12T09:32:51.354Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-12T09:32:51.355Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/angulartodo-af85b  
+  
+ Sun Aug 12 2018 15:02:51 GMT+0530 (IST)
+[debug] [2018-08-12T09:32:53.085Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/mayankjain/angular-todo'...
+[info] 
+[debug] [2018-08-12T09:32:54.505Z] Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/logs'
+    at Object.fs.mkdirSync (fs.js:885:18)
+    at Object.assertLogsPath (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/emulator/logs.js:65:10)
+    at new Controller (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/cli/controller.js:77:32)
+    at FunctionsEmulator.start (/usr/local/lib/node_modules/firebase-tools/lib/functionsEmulator.js:113:21)
+    at Object.start (/usr/local/lib/node_modules/firebase-tools/lib/serve/functions.js:9:29)
+    at /usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:17:21
+    at arrayMap (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:639:23)
+    at Function.map (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:9554:14)
+    at _serve (/usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:15:7)
+    at Command._action (/usr/local/lib/node_modules/firebase-tools/commands/serve.js:48:12)
+[error] 
+[error] Error: An unexpected error has occurred.

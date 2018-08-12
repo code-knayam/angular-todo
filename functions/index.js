@@ -1,83 +1,125 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
 admin.initializeApp();
+
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-exports.getUserInfo = functions.https.onRequest(
-  (req, res) => {
-    var db = admin.firestore();
-    var userId = req.query.userid;
 
-    res.header('Content-Type', 'application/json');
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+// Used to create new user in the database with a startup list
+// Called at time of user login / signup
+// RETURNS JSON object containing success code and message
+exports.createUserAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var username = req.query.username;
 
-    db.collection('user-data').doc(userId).get().then(
-      (doc) => {
-        var userData = doc.data();
-        userData['user_id'] = doc.id;
-        res.send(userData);
-        return "";
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  db.collection("user-data")
+    .doc(userId)
+    .get()
+    .then(doc => {
+      if (!doc.exists) {
+        db.collection("user-data")
+          .doc(userId)
+          .set({
+            username: username
+          });
+        return db
+          .collection("user-data")
+          .doc(userId)
+          .collection("lists-arr")
+          .add({
+            list_name: "Today's Task"
+          });
       }
-    ).catch(
-      (err) => {
-        res.send(err);
-      });
-  }
-);
+      res.send({ code: 200, status: "User Profile exists" });
+      return "";
+    })
+    .then(() => {
+      res.send({ code: 200, status: "User profile created" });
+      return "";
+    })
+    .catch(err => {
+      res.send({ error: err });
+    });
+});
 
-exports.getUserLists = functions.https.onRequest(
-  (req, res) => {
-    var userId = req.query.userid;
-    var db = admin.firestore();
+// Used to create user details object containing user lists and their tasks
+// Called at time of core component load
+// RETURNS JSON object containing list array with tasks
+exports.userDetailsAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var userDetailsApiResponse = {};
 
-    res.header('Content-Type', 'application/json');
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
 
-    db.collection('user-data').doc(userId).collection('lists_arr').get().then(
-      (querySnapshot) => {
-        var data = [];
-        querySnapshot.forEach((doc) => {
-          var listData = doc.data();
-          listData['list_id'] = doc.id;
-          data.push(listData);
-        });
-        res.send(data);
-        return "";
+  db.collection("user-data")
+    .doc(userId)
+    .get()
+    .then(docRef => {
+      if (docRef.exists) {
+        userDetailsApiResponse["code"] = 200;
+        userDetailsApiResponse["username"] = docRef.data().username;
+        userDetailsApiResponse["email"] = docRef.id;
+        userDetailsApiResponse["lists_arr"] = [];
+      } else {
+        throw new Error("user doesn't exist");
       }
-    ).catch(
-      (err) => {
-        res.send(err);
+      return "";
+    })
+    .then(() => {
+      return db
+        .collection("user-data")
+        .doc(userId)
+        .collection("lists-arr")
+        .get();
+    })
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        var listData = doc.data();
+        listData["list_id"] = doc.id;
+        userDetailsApiResponse.lists_arr.push(listData);
       });
-  }
-);
+      res.send(userDetailsApiResponse);
+      return "";
+    })
+    .catch(err => {
+      res.send({ error: err });
+    });
+});
 
-exports.getUserTasks = functions.https.onRequest(
-  (req, res) => {
-    var userId = req.query.userid;
-    var listId = req.query.listid;
-    var db = admin.firestore();
+exports.getTasksFromListAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var listId = req.query.listid;
+  var tasksAPIResponse = {tasks_arr: []};
 
-    res.header('Content-Type', 'application/json');
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
 
-    db.collection('user-data').doc(userId).collection('lists_arr').doc(listId).collection('tasks_arr').get().then(
-      (querySnapshot) => {
-        var data = [];
-        querySnapshot.forEach((doc) => {
-          var taskData = doc.data();
-          taskData['task_id'] = doc.id;
-          data.push(taskData);
-        });
-        res.send(data);
-        return "";
-      }
-    ).catch(
-      (err) => {
-        res.send(err);
+  db.collection("user-data")
+    .doc(userId)
+    .collection("lists-arr")
+    .doc(listId)
+    .collection("tasks-arr")
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(docRef => {
+        var taskData = docRef.data();
+        taskData["taskId"] = docRef.id;
+        tasksAPIResponse.tasks_arr.push(taskData);
       });
-  }
-);
+      res.send(tasksAPIResponse);
+      return "";
+    })
+    .catch(err => {
+      res.send({ error: err });
+    });
+});

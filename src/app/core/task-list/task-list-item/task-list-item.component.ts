@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../task.model';
+import { TaskService } from '../../task.service';
 
 @Component({
   selector: 'app-task-list-item',
@@ -10,13 +11,19 @@ export class TaskListItemComponent implements OnInit {
 
   @Input('task') task: Task;
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
   }
 
-  onToggleTaskCompleted() {
-    this.task.completed = !this.task.completed;
+  onToggleTaskToCompleted() {
+    this.task.completed = true;
+    this.taskService.toggleTaskToCompleted(this.task.id);
+  }
+
+  onToggleTaskToPending() {
+    this.task.completed = false;
+    this.taskService.toggleTaskToPending(this.task.id);
   }
 
 }

@@ -56,4 +56,50 @@ export class TaskService {
     return this.completedTasks.slice();
   }
 
+  toggleTaskToCompleted(taskId: string) {
+    // finding the task obejct based on taskID
+    const task = this.tasks.find(taskObj => {
+      return taskObj.id === taskId;
+    });
+    task.completed = true;
+
+    // removing it from tasks list
+    this.tasks = this.tasks.filter(taskObj => {
+      return taskObj.id !== taskId;
+    });
+
+    // adding task found to completed list
+    this.completedTasks.push(task);
+
+    // invoking subject with new values
+    this.taskSubject.next(this.tasks);
+    this.completedTaskSubject.next(this.completedTasks);
+    console.log('Toggled task with id', taskId);
+    console.log('Tasks', this.tasks);
+    console.log('Task completed', this.completedTasks);
+  }
+
+  toggleTaskToPending(taskId: string) {
+    // finding the task obejct based on taskID
+    const task = this.completedTasks.find(taskObj => {
+      return taskObj.id === taskId;
+    });
+    task.completed = false;
+
+    // removing it from tasks list
+    this.completedTasks = this.completedTasks.filter(taskObj => {
+      return taskObj.id !== taskId;
+    });
+
+    // adding task found to completed list
+    this.tasks.push(task);
+
+    // invoking subject with new values
+    this.taskSubject.next(this.tasks);
+    this.completedTaskSubject.next(this.completedTasks);
+    console.log('Toggled task with id', taskId);
+    console.log('Tasks', this.tasks);
+    console.log('Task completed', this.completedTasks);
+  }
+
 }

@@ -64,7 +64,7 @@ exports.userDetailsAPI = functions.https.onRequest((req, res) => {
     .get()
     .then(docRef => {
       if (docRef.exists) {
-        userDetailsApiResponse["code"] = 200;
+        userDetailsApiResponse["status"] = 200;
         userDetailsApiResponse["username"] = docRef.data().username;
         userDetailsApiResponse["email"] = docRef.id;
         userDetailsApiResponse["lists_arr"] = [];
@@ -113,6 +113,7 @@ exports.getTasksFromListAPI = functions.https.onRequest((req, res) => {
     .collection("tasks-arr")
     .get()
     .then(querySnapshot => {
+      tasksAPIResponse["status"] = 200;
       querySnapshot.forEach(docRef => {
         var taskData = docRef.data();
         taskData["task_id"] = docRef.id;

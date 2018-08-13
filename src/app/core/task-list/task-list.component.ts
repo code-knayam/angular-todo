@@ -22,6 +22,11 @@ export class TaskListComponent implements OnInit {
         this.tasks = tasks;
       }
     );
+    this.taskService.completedTaskSubject.subscribe(
+      (tasks: Task[]) => {
+        this.completedTasks = tasks;
+      }
+    );
   }
 
   onToggleCompletedTask() {

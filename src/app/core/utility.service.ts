@@ -4,32 +4,22 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class UtilityService {
 
-  private GET_USER_INFO_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/getUserInfo';
-  private GET_USER_LISTS_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/getUserLists';
-  private GET_USER_TASKS_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/getUserTasks';
+  private CREATE_USER_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/createUserAPI';
+  private USER_DETAILS_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/userDetailsAPI';
+  private GET_TASK_FROM_LIST_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/getTasksFromListAPI';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
+  createUser(userId: string, username: string) {
+    return this.http.get(this.CREATE_USER_API + '?userid=' + userId + '&username=' + username);
   }
 
-  fetchUserInfo(userId: string) {
-    this.http.get(this.GET_USER_INFO_API + '?userid=' + userId).subscribe(
-      (response) => {
-        console.log(response);
-      }
-    );
+  getUserDetails(userId: string) {
+    return this.http.get(this.USER_DETAILS_API + '?userid=' + userId);
   }
 
-  fetchUserLists(userId: string) {
-    this.http.get(this.GET_USER_LISTS_API + '?userid=' + userId).subscribe(
-      (response) => {
-        console.log(response);
-      }
-    );
-  }
-
-  fetchUserTasks(userId: string, listId: string) {
-    return this.http.get(this.GET_USER_TASKS_API + '?userid=' + userId + '&listid=' + listId);
+  getTasksFromList(userId: string, listId: string) {
+    return this.http.get(this.GET_TASK_FROM_LIST_API + '?userid=' + userId + '&listid=' + listId);
   }
 
 }

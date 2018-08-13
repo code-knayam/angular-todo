@@ -8,7 +8,7 @@ import { UserService } from '../core/user.service';
 @Injectable()
 export class AuthService {
 
-  private token: string;
+  private credential: any = {};
 
   constructor(private userService: UserService, private router: Router) {
 
@@ -21,24 +21,24 @@ export class AuthService {
       (result) => {
         console.log(result);
 
-        this.token = result.credential.idToken;
+        this.credential = result.credential;
         const newUser = new User(result.user.displayName, result.user.email, result.user.photoURL);
-        this.userService.setUser(newUser);
-        this.router.navigate(['/']);
+        this.userService.setUser(newUser)
+          .subscribe(
+            (response: any) => {
+              console.log(response);
+              this.router.navigate(['/']);
+            }
+          );
       }
-    ).catch(function(error) {
+    ).catch(function (error) {
       // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
+      console.log(error);
       // ...
     });
   }
 
   isUserLoggedIn() {
-    return this.token != null;
+    return this.credential.accessToken != null;
   }
 }

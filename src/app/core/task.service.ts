@@ -8,25 +8,38 @@ import { UtilityService } from './utility.service';
 export class TaskService {
 
   taskSubject = new Subject<Task[]>();
+  completedTaskSubject = new Subject<Task[]>();
   private tasks: Task[] = [];
+  private completedTasks: Task[] = [];
+  private userDetailsAPIResponse;
+  activeListId;
 
-  private completedTasks: Task[] = [
-    new Task('randomID', 'default completed task', true, new Date())
-  ];
 
   constructor(private utilityService: UtilityService) { }
 
-  fetchTasks() {
-    this.utilityService.fetchUserTasks('qrqc1EHOPCp21wvN9ngp', 'BWhA55MONLnyugRVUDqd').subscribe(
-      (response: any) => {
-        response.forEach(taskObject => {
-          console.log(taskObject);
-          const newTask = new Task(taskObject.task_id, taskObject.task_name, taskObject.task_completed, taskObject.date_created);
-          this.tasks.push(newTask);
-        });
-        this.taskSubject.next(this.tasks);
+  fetchTasksFromList(userId: string, listId: string) {
+    return this.utilityService.getTasksFromList(userId, listId);
+  }
+
+  setTasks(taskResponse) {
+    for (let index = 0; index < taskResponse.length; index++) {
+      const task = new Task(taskResponse[index].task_id, taskResponse[index].task_name, taskResponse[index].completed_status);
+      if (task.completed) {
+        this.completedTasks.push(task);
+      } else {
+        this.tasks.push(task);
       }
-    );
+    }
+    console.log(this.tasks);
+    console.log(this.completedTasks);
+    this.taskSubject.next(this.tasks);
+    this.completedTaskSubject.next(this.completedTasks);
+  }
+
+  setUserDetailsAPIResponse(response) {
+    this.userDetailsAPIResponse = response;
+    console.log(this.userDetailsAPIResponse);
+    this.activeListId = this.userDetailsAPIResponse.lists_arr[0].list_id;
   }
 
   saveNewTask(newTask: Task) {

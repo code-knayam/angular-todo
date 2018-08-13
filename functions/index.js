@@ -43,7 +43,7 @@ exports.createUserAPI = functions.https.onRequest((req, res) => {
       return "";
     })
     .catch(err => {
-      res.send({ error: err });
+      res.send(err);
     });
 });
 
@@ -90,7 +90,7 @@ exports.userDetailsAPI = functions.https.onRequest((req, res) => {
       return "";
     })
     .catch(err => {
-      res.send({ error: err });
+      res.send(err);
     });
 });
 
@@ -113,13 +113,13 @@ exports.getTasksFromListAPI = functions.https.onRequest((req, res) => {
     .then(querySnapshot => {
       querySnapshot.forEach(docRef => {
         var taskData = docRef.data();
-        taskData["taskId"] = docRef.id;
+        taskData["task_id"] = docRef.id;
         tasksAPIResponse.tasks_arr.push(taskData);
       });
       res.send(tasksAPIResponse);
       return "";
     })
     .catch(err => {
-      res.send({ error: err });
+      res.send(err);
     });
 });

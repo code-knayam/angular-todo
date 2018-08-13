@@ -86,12 +86,12 @@ export class TaskService {
     });
     task.completed = false;
 
-    // removing it from tasks list
+    // removing it from completed tasks list
     this.completedTasks = this.completedTasks.filter(taskObj => {
       return taskObj.id !== taskId;
     });
 
-    // adding task found to completed list
+    // adding task found to task list
     this.tasks.push(task);
 
     // invoking subject with new values

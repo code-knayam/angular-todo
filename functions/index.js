@@ -49,7 +49,7 @@ exports.createUserAPI = functions.https.onRequest((req, res) => {
 
 // Used to create user details object containing user lists and their tasks
 // Called at time of core component load
-// RETURNS JSON object containing list array with tasks
+// RETURNS JSON object containing list array
 exports.userDetailsAPI = functions.https.onRequest((req, res) => {
   var db = admin.firestore();
   var userId = req.query.userid;
@@ -94,11 +94,13 @@ exports.userDetailsAPI = functions.https.onRequest((req, res) => {
     });
 });
 
+// Used to fetch tasks for a particular list and user id
+// RETURNS JSON object containing tasks_arr with tasks details
 exports.getTasksFromListAPI = functions.https.onRequest((req, res) => {
   var db = admin.firestore();
   var userId = req.query.userid;
   var listId = req.query.listid;
-  var tasksAPIResponse = {tasks_arr: []};
+  var tasksAPIResponse = { tasks_arr: [] };
 
   res.header("Content-Type", "application/json");
   res.header("Access-Control-Allow-Origin", "*");
@@ -120,6 +122,31 @@ exports.getTasksFromListAPI = functions.https.onRequest((req, res) => {
       return "";
     })
     .catch(err => {
+      res.send(err);
+    });
+});
+
+exports.updateTaskStatusAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var listId = req.query.listid;
+  var taskId = req.query.taskid;
+  var status = req.query.status;
+
+  db.collection("user-data")
+    .doc(userId)
+    .collection("lists-arr")
+    .doc(listId)
+    .collection("tasks-arr")
+    .doc(taskId)
+    .update({
+      completed_status: status
+    }).then(
+      () => {
+        res.send({ status: 200, msg: "Tasks Updated" });
+        return "";
+      }
+    ).catch(err => {
       res.send(err);
     });
 });

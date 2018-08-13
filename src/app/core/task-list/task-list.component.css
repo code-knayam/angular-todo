@@ -9,6 +9,9 @@
 }
 .task-heading h3 {
   line-height: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .task-container {

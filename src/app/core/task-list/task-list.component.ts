@@ -9,14 +9,13 @@ import { TaskService } from '../task.service';
 })
 export class TaskListComponent implements OnInit {
 
-  tasks: Task[];
-  completedTasks: Task[];
+  tasks: Task[] = [];
+  completedTasks: Task[] = [];
+  listName = '';
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    this.tasks = this.taskService.getTasks();
-    this.completedTasks = this.taskService.getCompletedTasks();
     this.taskService.taskSubject.subscribe(
       (tasks: Task[]) => {
         this.tasks = tasks;
@@ -25,6 +24,11 @@ export class TaskListComponent implements OnInit {
     this.taskService.completedTaskSubject.subscribe(
       (tasks: Task[]) => {
         this.completedTasks = tasks;
+      }
+    );
+    this.taskService.activeListNameSubject.subscribe(
+      (listName: string) => {
+        this.listName = listName;
       }
     );
   }

@@ -35,11 +35,11 @@ exports.createUserAPI = functions.https.onRequest((req, res) => {
             list_name: "Today's Task"
           });
       }
-      res.send({ code: 200, status: "User Profile exists" });
+      res.send({ status: 200, msg: "User Profile exists" });
       return "";
     })
     .then(() => {
-      res.send({ code: 200, status: "User profile created" });
+      res.send({ status: 200, msg: "User profile created" });
       return "";
     })
     .catch(err => {
@@ -126,6 +126,9 @@ exports.getTasksFromListAPI = functions.https.onRequest((req, res) => {
     });
 });
 
+// Used to update completed status of a task
+// Uses UserId, listId, taskId and the new status
+// RETURNS JSON object containing success code, and msg
 exports.updateTaskStatusAPI = functions.https.onRequest((req, res) => {
   var db = admin.firestore();
   var userId = req.query.userid;
@@ -143,10 +146,39 @@ exports.updateTaskStatusAPI = functions.https.onRequest((req, res) => {
       completed_status: status
     }).then(
       () => {
-        res.send({ status: 200, msg: "Tasks Updated" });
+        res.send({ status: 200, msg: "Tasks Updated Successfully!" });
         return "";
       }
     ).catch(err => {
       res.send(err);
     });
+});
+
+// Used to add a new task to a list
+// Uses UserId, listId and the new task details (name)
+// RETURNS JSON object containing success code, taskId and msg
+exports.addTaskAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var listId = req.query.listid;
+  var taskName = req.query.taskname;
+
+  db.collection("user-data")
+    .doc(userId)
+    .collection("lists-arr")
+    .doc(listId)
+    .collection("tasks-arr")
+    .add({
+      task_name: taskName,
+      completed_status: false,
+      date_created: new Date()
+    })
+    .then(
+    (docRef) => {
+      res.send({status: 200, task_id: docRef.id, msg: "Task Added Successfully!"});
+      return "";
+    }
+  ).catch(err => {
+    res.send(err);
+  })
 });

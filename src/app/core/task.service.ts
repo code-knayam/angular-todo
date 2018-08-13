@@ -78,7 +78,7 @@ export class TaskService {
     });
 
     // adding task found to completed list
-    this.completedTasks.push(task);
+    this.completedTasks.unshift(task);
 
     // invoking subject with new values
     this.taskSubject.next(this.tasks);
@@ -102,7 +102,7 @@ export class TaskService {
     });
 
     // adding task found to task list
-    this.tasks.push(task);
+    this.tasks.unshift(task);
 
     // invoking subject with new values
     this.taskSubject.next(this.tasks);

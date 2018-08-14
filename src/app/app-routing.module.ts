@@ -5,7 +5,8 @@ import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
   {path: '', component: CoreComponent },
-  {path: 'auth', component: AuthComponent }
+  {path: 'auth', component: AuthComponent },
+  {path: '**', redirectTo: 'auth' }
 ];
 
 @NgModule({

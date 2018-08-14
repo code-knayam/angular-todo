@@ -116,7 +116,9 @@ export class TaskService {
             return false;
           }
         }
-      );
+    );
+    // fallback return to false to depict pending task
+    return false;
   }
 
   // toggling task to pending
@@ -154,7 +156,9 @@ export class TaskService {
             return true;
           }
         }
-      );
+    );
+    // fallback return to true to depict completed task
+    return true;
   }
 
   updateTaskStatus(taskId: string, status: boolean) {

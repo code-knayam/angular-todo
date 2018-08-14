@@ -183,3 +183,27 @@ exports.addTaskAPI = functions.https.onRequest((req, res) => {
     res.send(err);
   })
 });
+
+// Used to add a new list to a user profile
+// Uses UserId and the new list details (name)
+// RETURNS JSON object containing success code, listId and msg
+exports.addListAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var listName = req.query.listname;
+
+  db.collection("user-data")
+    .doc(userId)
+    .collection("lists-arr")
+    .add({
+      list_name: listName
+    })
+    .then(
+    (docRef) => {
+      res.send({status: 200, list_id: docRef.id, msg: "List Added Successfully!"});
+      return "";
+    }
+  ).catch(err => {
+    res.send(err);
+  })
+});

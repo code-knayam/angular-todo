@@ -8,17 +8,12 @@ import { AuthService } from './auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
-
-  }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() { }
 
   getStartedWithGoogle() {
     this.authService.signInUserWithGoogle();
-  }
-
-  getStartedWithEmail() {
   }
 
 }

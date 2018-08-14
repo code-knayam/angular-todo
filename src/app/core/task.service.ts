@@ -3,6 +3,8 @@ import { Subject } from 'rxjs';
 
 import { Task } from './task.model';
 import { UtilityService } from './utility.service';
+import { UserService } from './user.service';
+import { SpinnerService } from '../spinner/spinner.service';
 
 @Injectable()
 export class TaskService {
@@ -16,7 +18,9 @@ export class TaskService {
   activeListId;
 
 
-  constructor(private utilityService: UtilityService) { }
+  constructor(private utilityService: UtilityService,
+    private userService: UserService,
+    private spinnerService: SpinnerService) { }
 
   // Call utility method to fetch lists from backend
   fetchTasksFromList(userId: string, listId: string) {
@@ -48,10 +52,22 @@ export class TaskService {
   }
 
   // saving a new task
-  saveNewTask(newTask: Task) {
-    console.log(newTask);
-    this.tasks.unshift(newTask);
-    this.taskSubject.next(this.tasks);
+  saveNewTask(taskName: string) {
+    this.spinnerService.showSpinner();
+    this.utilityService.addTask(this.userService.getUser().email, this.activeListId, taskName)
+      .subscribe(
+        (response: any) => {
+          if (response.status === 200) {
+            console.log('Adding new task', response);
+            const newTask = new Task(response.task_id, taskName, false);
+            this.tasks.unshift(newTask);
+            this.taskSubject.next(this.tasks);
+          } else {
+            console.log('Error while adding new task', response);
+          }
+          this.spinnerService.hideSpinner();
+        }
+      );
   }
 
   // returning tasks list

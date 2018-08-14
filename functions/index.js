@@ -137,6 +137,10 @@ exports.updateTaskStatusAPI = functions.https.onRequest((req, res) => {
   var taskId = req.query.taskid;
   var status = req.query.status;
 
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
   db.collection("user-data")
     .doc(userId)
     .collection("lists-arr")
@@ -163,6 +167,10 @@ exports.addTaskAPI = functions.https.onRequest((req, res) => {
   var userId = req.query.userid;
   var listId = req.query.listid;
   var taskName = req.query.taskname;
+
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
 
   db.collection("user-data")
     .doc(userId)
@@ -191,6 +199,10 @@ exports.addListAPI = functions.https.onRequest((req, res) => {
   var db = admin.firestore();
   var userId = req.query.userid;
   var listName = req.query.listname;
+
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
 
   db.collection("user-data")
     .doc(userId)

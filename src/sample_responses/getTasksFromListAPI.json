@@ -1,0 +1,33 @@
+{
+  "tasks_arr": [
+      {
+          "task_name": "NEW TASK",
+          "completed_status": false,
+          "date_created": "2018-08-13T20:38:57.424Z",
+          "task_id": "457VHBZvpthcYrsuzssV"
+      },
+      {
+          "task_name": "completed stuff",
+          "completed_status": true,
+          "task_id": "FHGlQnX0TfPPmyxPiIOF"
+      },
+      {
+          "date_created": "2018-08-13T21:52:54.697Z",
+          "task_name": "NEW TASK  2",
+          "completed_status": false,
+          "task_id": "GGNZEVl2kz5DGps3N9qx"
+      },
+      {
+          "task_name": "get stuff",
+          "completed_status": "false",
+          "task_id": "LKNUaUeB5pxaIkw6wdQL"
+      },
+      {
+          "date_created": "2018-08-13T21:50:40.273Z",
+          "task_name": "NEW TASK",
+          "completed_status": false,
+          "task_id": "rO6ILZ09ncEO0xWZrsw5"
+      }
+  ],
+  "status": 200
+}

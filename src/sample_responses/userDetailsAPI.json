@@ -1,0 +1,15 @@
+{
+  "status": 200,
+  "username": "mayank jain",
+  "email": "mayankjain1394@gmail.com",
+  "lists_arr": [
+      {
+          "list_name": "Today's Task",
+          "list_id": "Uli05ng11YjP15b48t1G"
+      },
+      {
+          "list_name": "My New List",
+          "list_id": "lSRCEUoEbRHTIYCy4c7o"
+      }
+  ]
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit {
 
-  constructor() {
+  constructor(private authService: AuthService) {
 
   }
 
@@ -18,5 +19,9 @@ export class AppComponent implements OnInit {
       authDomain: 'angulartodo-af85b.firebaseapp.com',
       projectId: 'angulartodo-af85b'
     });
+
+    if (this.authService.ifIdTokenPresentInLocalStorage()) {
+      this.authService.autoSignInWithIdTokenFromLocalStorage();
+    }
   }
 }

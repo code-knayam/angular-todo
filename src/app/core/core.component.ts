@@ -20,6 +20,7 @@ export class CoreComponent implements OnInit {
   private userService: UserService) { }
 
   ngOnInit() {
+    this.spinnerService.showSpinner();
     if (!this.authService.isUserLoggedIn()) {
       this.spinnerService.hideSpinner();
       this.router.navigate(['/auth']);

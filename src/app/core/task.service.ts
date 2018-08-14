@@ -82,50 +82,83 @@ export class TaskService {
 
   // toggling task to completed
   toggleTaskToCompleted(taskId: string) {
-    // finding the task obejct based on taskID
-    const task = this.tasks.find(taskObj => {
-      return taskObj.id === taskId;
-    });
-    task.completed = true;
+    this.spinnerService.showSpinner();
+    this.updateTaskStatus(taskId, true)
+      .subscribe(
+        (response: any) => {
+          if (response.status === 200) {
+            console.log('Updating status', response);
+            // finding the task obejct based on taskID
+            const task = this.tasks.find(taskObj => {
+              return taskObj.id === taskId;
+            });
+            task.completed = true;
 
-    // removing it from tasks list
-    this.tasks = this.tasks.filter(taskObj => {
-      return taskObj.id !== taskId;
-    });
+            // removing it from tasks list
+            this.tasks = this.tasks.filter(taskObj => {
+              return taskObj.id !== taskId;
+            });
 
-    // adding task found to completed list
-    this.completedTasks.unshift(task);
+            // adding task found to completed list
+            this.completedTasks.unshift(task);
 
-    // invoking subject with new values
-    this.taskSubject.next(this.tasks);
-    this.completedTaskSubject.next(this.completedTasks);
-    console.log('Toggled task with id', taskId);
-    console.log('Tasks', this.tasks);
-    console.log('Task completed', this.completedTasks);
+            // invoking subject with new values
+            this.taskSubject.next(this.tasks);
+            this.completedTaskSubject.next(this.completedTasks);
+            console.log('Toggled task with id to true status', taskId);
+            console.log('Tasks', this.tasks);
+            console.log('Task completed', this.completedTasks);
+            this.spinnerService.hideSpinner();
+            return true;
+          } else {
+            this.spinnerService.hideSpinner();
+            console.log('Error while Updating', response);
+            return false;
+          }
+        }
+      );
   }
 
   // toggling task to pending
   toggleTaskToPending(taskId: string) {
-    // finding the task obejct based on taskID
-    const task = this.completedTasks.find(taskObj => {
-      return taskObj.id === taskId;
-    });
-    task.completed = false;
+    this.spinnerService.showSpinner();
+    this.updateTaskStatus(taskId, false)
+      .subscribe(
+        (response: any) => {
+          if (response.status === 200) {
+            // finding the task obejct based on taskID
+            const task = this.completedTasks.find(taskObj => {
+              return taskObj.id === taskId;
+            });
+            task.completed = false;
 
-    // removing it from completed tasks list
-    this.completedTasks = this.completedTasks.filter(taskObj => {
-      return taskObj.id !== taskId;
-    });
+            // removing it from completed tasks list
+            this.completedTasks = this.completedTasks.filter(taskObj => {
+              return taskObj.id !== taskId;
+            });
 
-    // adding task found to task list
-    this.tasks.unshift(task);
+            // adding task found to task list
+            this.tasks.unshift(task);
 
-    // invoking subject with new values
-    this.taskSubject.next(this.tasks);
-    this.completedTaskSubject.next(this.completedTasks);
-    console.log('Toggled task with id', taskId);
-    console.log('Tasks', this.tasks);
-    console.log('Task completed', this.completedTasks);
+            // invoking subject with new values
+            this.taskSubject.next(this.tasks);
+            this.completedTaskSubject.next(this.completedTasks);
+            console.log('Toggled task with id to false status', taskId);
+            console.log('Tasks', this.tasks);
+            console.log('Task completed', this.completedTasks);
+            this.spinnerService.hideSpinner();
+            return false;
+          } else {
+            this.spinnerService.hideSpinner();
+            console.log('Error while Updating', response);
+            return true;
+          }
+        }
+      );
+  }
+
+  updateTaskStatus(taskId: string, status: boolean) {
+    return this.utilityService.updateTaskStatus(this.userService.getUser().email, this.activeListId, taskId, status);
   }
 
 

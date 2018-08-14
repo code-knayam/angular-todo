@@ -135,7 +135,7 @@ exports.updateTaskStatusAPI = functions.https.onRequest((req, res) => {
   var userId = req.query.userid;
   var listId = req.query.listid;
   var taskId = req.query.taskid;
-  var status = req.query.status;
+  var status = (req.query.status === 'true');
 
   res.header("Content-Type", "application/json");
   res.header("Access-Control-Allow-Origin", "*");

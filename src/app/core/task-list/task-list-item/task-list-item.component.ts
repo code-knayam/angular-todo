@@ -17,13 +17,11 @@ export class TaskListItemComponent implements OnInit {
   }
 
   onToggleTaskToCompleted() {
-    this.task.completed = true;
-    this.taskService.toggleTaskToCompleted(this.task.id);
+    this.task.completed = this.taskService.toggleTaskToCompleted(this.task.id);
   }
 
   onToggleTaskToPending() {
-    this.task.completed = false;
-    this.taskService.toggleTaskToPending(this.task.id);
+    this.task.completed = this.taskService.toggleTaskToPending(this.task.id);
   }
 
 }

@@ -8,8 +8,6 @@ import { AuthService } from './auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  private clientId = '258304393244-adqi0as8743c4f8dtvnls86h3nom39e4.apps.googleusercontent.com';
-
   constructor(private authService: AuthService) {
 
   }

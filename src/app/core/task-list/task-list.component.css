@@ -45,18 +45,23 @@
 }
 .no-pending-task-container {
   width: 100%;
-  margin: 50px 0 200px;
+  height: 550px;
   text-align: center;
+  position: relative;
+  top: 50%;
+  margin: 0 auto;
+  transform: translate(0, -50%);
 }
 .no-pending-task-container img {
   width: auto;
   height: auto;
-  margin: 10px 5px;
+  margin: 0 5px 15px;
 }
 .no-pending-task-container h5 {
   font-size: 19px;
   color: #444;
   padding: 10px 15px 5px;
+  margin-bottom: 0;
 }
 .no-pending-task-container p {
   font-size: 15px;

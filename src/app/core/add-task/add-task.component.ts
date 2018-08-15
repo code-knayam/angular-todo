@@ -12,7 +12,7 @@ import { SharedService } from '../shared.service';
 export class AddTaskComponent implements OnInit {
 
   addTaskForm: FormGroup;
-  showFormFlag = false;
+  showFormFlag: boolean;
   showFormOptions = false;
 
   constructor(private fb: FormBuilder,
@@ -52,7 +52,7 @@ export class AddTaskComponent implements OnInit {
 
   resetAddTaskForm() {
     this.addTaskForm.reset();
-    this.showFormFlag = false;
+    this.sharedService.toggleAddTaskForm(false);
     this.showFormOptions = false;
   }
 }

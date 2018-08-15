@@ -29,7 +29,7 @@ export class CoreComponent implements OnInit {
       this.userService.initApp().subscribe(
         (response) => {
           this.taskService.setUserDetailsAPIResponse(response);
-          this.taskService.fetchTasksFromList(user.email, this.taskService.activeListId)
+          this.taskService.fetchTasksFromList(user.email, this.taskService.activeList.list_id)
           .subscribe(
             (taskResponse: any) => {
               this.spinnerService.hideSpinner();

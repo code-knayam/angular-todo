@@ -15,7 +15,7 @@ export class TaskService {
   private tasks: Task[] = [];
   private completedTasks: Task[] = [];
   private userDetailsAPIResponse;
-  activeListId;
+  activeList;
 
 
   constructor(private utilityService: UtilityService,
@@ -41,20 +41,20 @@ export class TaskService {
     console.log(this.completedTasks);
     this.taskSubject.next(this.tasks);
     this.completedTaskSubject.next(this.completedTasks);
-    this.activeListNameSubject.next(this.getActiveListName());
+    this.activeListNameSubject.next(this.activeList.list_name);
   }
 
   // setting user details api response
   setUserDetailsAPIResponse(response) {
     this.userDetailsAPIResponse = response;
     console.log(this.userDetailsAPIResponse);
-    this.activeListId = this.userDetailsAPIResponse.lists_arr[0].list_id;
+    this.activeList = this.userDetailsAPIResponse.lists_arr[0];
   }
 
   // saving a new task
   saveNewTask(taskName: string) {
     this.spinnerService.showSpinner();
-    this.utilityService.addTask(this.userService.getUser().email, this.activeListId, taskName)
+    this.utilityService.addTask(this.userService.getUser().email, this.activeList.list_id, taskName)
       .subscribe(
         (response: any) => {
           if (response.status === 200) {
@@ -162,15 +162,7 @@ export class TaskService {
   }
 
   updateTaskStatus(taskId: string, status: boolean) {
-    return this.utilityService.updateTaskStatus(this.userService.getUser().email, this.activeListId, taskId, status);
-  }
-
-
-  getActiveListName() {
-    const activeList = this.userDetailsAPIResponse.lists_arr.find(listObj => {
-      return listObj.list_id === this.activeListId;
-    });
-    return activeList.list_name;
+    return this.utilityService.updateTaskStatus(this.userService.getUser().email, this.activeList.list_id, taskId, status);
   }
 
 }

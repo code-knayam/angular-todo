@@ -1,3 +1,20 @@
-<p>
-  task-menu-container works!
-</p>
+<div class="task-menu-container" [ngClass]="{'active-task-menu-container': taskMenuFlag}">
+  <div class="task-menu-btn-container"  [ngClass]="{'active-task-menu-btn-container': taskMenuFlag}">
+    <ul>
+      <li>
+        <a class="menu-btn rename-list-btn">Rename list</a>
+      </li>
+      <li>
+        <a class="menu-btn delete-list-btn">Delete list</a>
+      </li>
+      <li>
+        <a class="menu-btn delete-completed-task-btn">Delete all completed tasks</a>
+      </li>
+    </ul>
+    <div class="close-task-menu-btn-container">
+      <a class="close-task-menu-btn" (click)="onCloseTaskMenu()">
+        <i class="fas fa-times-circle"></i>
+      </a>
+    </div>
+  </div>
+</div>

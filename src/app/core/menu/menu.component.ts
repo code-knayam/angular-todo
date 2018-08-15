@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
   }
 
   onAddTaskBtn() {
-    this.sharedService.showAddTaskForm();
+    this.sharedService.toggleAddTaskForm(true);
   }
 
   onMenuToggleBtn() {
@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit {
   }
 
   onTaskMenuToggleBtn() {
-
+    this.sharedService.toggleTaskMenu(true);
   }
 
 }

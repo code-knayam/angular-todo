@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-task-menu-container',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskMenuContainerComponent implements OnInit {
 
-  constructor() { }
+  taskMenuFlag: boolean;
+
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
+    this.sharedService.toggleTaskMenuFlag.subscribe(
+      (flag: boolean) => {
+        this.taskMenuFlag = flag;
+      }
+    );
+  }
+
+  onCloseTaskMenu() {
+    this.sharedService.toggleTaskMenu(false);
   }
 
 }

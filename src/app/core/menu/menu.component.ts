@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
   }
 
   onMenuToggleBtn() {
-
+    this.sharedService.toggleMenu(true);
   }
 
   onTaskMenuToggleBtn() {

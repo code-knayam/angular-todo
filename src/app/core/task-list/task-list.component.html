@@ -9,7 +9,7 @@
     <div class="completed-task-heading">
       <a (click)="onToggleCompletedTask()">
         Completed Tasks ({{completedTasks.length}})
-        <i class="fas fa-angle-down" [ngClass]="{'active-completed-task-container-icon': showCompletedTaskFlag}"></i>
+        <i class="fas fa-angle-down" [ngClass]="{'active-completed-task-container-icon': completedTasks.length !== 0 && showCompletedTaskFlag}"></i>
       </a>
     </div>
     <div class="completed-tasks">

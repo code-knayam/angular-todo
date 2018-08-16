@@ -42,20 +42,23 @@
   float: right;
   margin-right: 50px;
   line-height: 50px;
+  transition: .8s;
+}
+.active-completed-task-container-icon {
+  transform: rotate(-180deg);
 }
 .no-pending-task-container {
   width: 100%;
   height: 550px;
   text-align: center;
-  position: relative;
-  top: 50%;
-  margin: 0 auto;
-  transform: translate(0, -50%);
+  margin-top: 60px;
 }
 .no-pending-task-container img {
-  width: auto;
-  height: auto;
-  margin: 0 5px 15px;
+  display: block;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  margin-bottom: 15px;
 }
 .no-pending-task-container h5 {
   font-size: 19px;

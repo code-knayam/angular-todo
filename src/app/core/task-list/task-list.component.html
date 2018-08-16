@@ -9,14 +9,16 @@
     <div class="completed-task-heading">
       <a (click)="onToggleCompletedTask()">
         Completed Tasks ({{completedTasks.length}})
-        <i class="fas fa-angle-down"></i>
+        <i class="fas fa-angle-down" [ngClass]="{'active-completed-task-container-icon': showCompletedTaskFlag}"></i>
       </a>
     </div>
     <div class="completed-tasks">
-      <app-task-list-item *ngFor="let task of completedTasks" [task]="task"></app-task-list-item>
+      <ng-container *ngFor="let task of completedTasks">
+        <app-task-list-item [task]="task" *ngIf="showCompletedTaskFlag"></app-task-list-item>
+      </ng-container>
     </div>
   </div>
-  <div class="no-pending-task-container" *ngIf="tasks.length === 0">
+  <div class="no-pending-task-container" *ngIf="tasks.length === 0 && !showCompletedTaskFlag">
     <img src="../../../assets/NoPendingTaskBackground.png" alt="No Task Pending">
     <h5>Nicely Done!</h5>
     <p>You've finished all your tasks. <br>Take a second to recharge and start again.</p>

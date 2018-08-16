@@ -12,6 +12,7 @@ export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   completedTasks: Task[] = [];
   listName = '';
+  showCompletedTaskFlag = false;
 
   constructor(private taskService: TaskService) { }
 
@@ -34,7 +35,7 @@ export class TaskListComponent implements OnInit {
   }
 
   onToggleCompletedTask() {
-    console.log('toggle');
+    this.showCompletedTaskFlag = !this.showCompletedTaskFlag;
   }
 
 }

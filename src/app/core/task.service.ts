@@ -10,6 +10,7 @@ import { SpinnerService } from '../spinner/spinner.service';
 export class TaskService {
 
   taskSubject = new Subject<Task[]>();
+  listsSubject = new Subject<[]>();
   completedTaskSubject = new Subject<Task[]>();
   activeListNameSubject = new Subject<string>();
   private tasks: Task[] = [];
@@ -49,6 +50,7 @@ export class TaskService {
     this.userDetailsAPIResponse = response;
     console.log(this.userDetailsAPIResponse);
     this.activeList = this.userDetailsAPIResponse.lists_arr[0];
+    this.listsSubject.next(this.userDetailsAPIResponse.lists_arr);
   }
 
   // saving a new task
@@ -164,5 +166,4 @@ export class TaskService {
   updateTaskStatus(taskId: string, status: boolean) {
     return this.utilityService.updateTaskStatus(this.userService.getUser().email, this.activeList.list_id, taskId, status);
   }
-
 }

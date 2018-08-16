@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../shared.service';
+import { UserService } from '../../user.service';
+import { User } from '../../user.model';
+import { TaskService } from '../../task.service';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-menu-container',
@@ -9,10 +13,23 @@ import { SharedService } from '../../shared.service';
 export class MenuContainerComponent implements OnInit {
 
   menuFlag: boolean;
+  user: User;
+  lists = [];
+  activeListId = '';
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService,
+    private userService: UserService,
+    private taskService: TaskService,
+  private authService: AuthService) { }
 
   ngOnInit() {
+    this.user = this.userService.getUser();
+    this.taskService.listsSubject.subscribe(
+      (lists: []) => {
+        this.lists = lists;
+        this.activeListId = this.taskService.activeList.list_id;
+      }
+    );
     this.sharedService.toggleMenuFlag.subscribe(
       (flag: boolean) => {
         this.menuFlag = flag;
@@ -20,8 +37,16 @@ export class MenuContainerComponent implements OnInit {
     );
   }
 
-  onCloseMenu() {
+  onCloseMenuBtn() {
     this.sharedService.toggleMenu(false);
+  }
+
+  onSignOutBtn() {
+    this.authService.signOutUser();
+  }
+
+  onMakeListActiveBtn(listId: string) {
+    console.log('Make list active with Id', listId);
   }
 
 }

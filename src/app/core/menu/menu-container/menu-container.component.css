@@ -1,4 +1,4 @@
-.menu-container {
+.menu-outer-container {
   position: absolute;
   top: 60px;
   left: 0;
@@ -7,48 +7,121 @@
   background: rgba(1, 1, 1, 0.3);
   transition: .5s;
   z-index: 5;
+  overflow-y: scroll;
 }
-.active-menu-container {
+.active-menu-outer-container {
   top: calc(-100vh + 60px );
 }
-.menu-btn-container {
-  height: 250px;
+.menu-container {
+  min-height: 250px;
   width: 100%;
   position: relative;
   top: 100vh;
-  padding: 30px 10px;
+  padding: 30px 0;
   box-shadow: 0 -5px 10px #999;
   background: #FFF;
+  overflow-y: scroll;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   transition: .8s cubic-bezier(1, 0, 0, 1.25);
   z-index: 99;
 }
-.active-menu-btn-container {
+.active-menu-container {
   top: calc(100vh - 250px);
 }
-.menu-btn-container ul {
+
+.menu-container .profile-container {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.075);
+  padding: 0 20px;
+}
+.menu-container .profile-container .user-img-container {
+  float: left;
+  height: 70px;
+  width: 70px;
+}
+.menu-container .profile-container .user-img-container .user-img {
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
+.menu-container .profile-container .user-detail-container {
+  float: left;
+  height: 70px;
+  padding: 10px;
+}
+.menu-container .profile-container .user-detail-container h6 {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 0;
+}
+.menu-container .profile-container .user-detail-container a {
+  font-size: 14px;
+  color: #666;
+}
+.menu-container .profile-container .sign-out-btn-container {
+  float: right;
+  height: 70px;
+  padding: 5px 10px;
+}
+.menu-container .profile-container .sign-out-btn-container .sign-out-btn {
+  position: relative;
+  right: 0;
+  font-size: 16px;
+  line-height: 70px;
+  color: rgb(111, 103, 255);
+  cursor: pointer;
+}
+.menu-container .profile-container .clear {
+  clear: both;
+}
+
+.menu-container .list-container {
+  width: 100%;
+  min-height: 70px;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.075);
+  padding: 10px 10px;
+  padding-right: 0;
+}
+.menu-container .list-container ul {
   list-style: none;
-  width: 100%;
   margin: 0;
+  margin-left: -40px;
 }
-.menu-btn-container ul li {
-  height: 30px;
-  width: 100%;
-  margin: 13px 0;
-  padding: 0;
-  line-height: 30px;
-}
-.menu-btn-container .menu-btn{
-  width: 100%;
-  height: 100%;
-  display: block;
-  margin: 0;
-  padding: 0;
+.menu-container .list-container .lists .list-item {
   color: #333;
   font-size: 16px;
-  line-height: 30px;
+  margin: 5px 0;
+  height: 45px;
+  line-height: 45px;
+  padding-left: 15px;
 }
+.menu-container .list-container .lists .list-item.active-list-item {
+  color: rgba(111, 103, 255, 1);
+  background: rgba(111, 103, 255, 0.1);
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.menu-container .add-new-list-btn-container {
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.075);
+  padding: 10px 25px;
+}
+.menu-container .add-new-list-btn-container .add-new-list-btn {
+  color: #333;
+  font-size: 16px;
+  line-height: 45px;
+}
+.menu-container .add-new-list-btn-container .add-new-list-btn i {
+  color: #666;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
 .close-menu-btn-container {
   width: 100%;
   text-align: center;

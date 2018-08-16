@@ -26,9 +26,9 @@ export class TaskListComponent implements OnInit {
         this.completedTasks = tasks;
       }
     );
-    this.taskService.activeListNameSubject.subscribe(
-      (listName: string) => {
-        this.listName = listName;
+    this.taskService.activeListSubject.subscribe(
+      (list: any) => {
+        this.listName = list.list_name;
       }
     );
   }

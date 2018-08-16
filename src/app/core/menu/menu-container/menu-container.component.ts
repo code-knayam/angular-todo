@@ -27,7 +27,11 @@ export class MenuContainerComponent implements OnInit {
     this.taskService.listsSubject.subscribe(
       (lists: []) => {
         this.lists = lists;
-        this.activeListId = this.taskService.activeList.list_id;
+      }
+    );
+    this.taskService.activeListSubject.subscribe(
+      (list: any) => {
+        this.activeListId = list.list_id;
       }
     );
     this.sharedService.toggleMenuFlag.subscribe(
@@ -43,10 +47,15 @@ export class MenuContainerComponent implements OnInit {
 
   onSignOutBtn() {
     this.authService.signOutUser();
+    this.onCloseMenuBtn();
   }
 
   onMakeListActiveBtn(listId: string) {
     console.log('Make list active with Id', listId);
+    if (listId !== this.activeListId) {
+      this.taskService.makeListActive(listId);
+      this.onCloseMenuBtn();
+    }
   }
 
 }

@@ -12,7 +12,7 @@ export class TaskService {
   taskSubject = new Subject<Task[]>();
   listsSubject = new Subject<[]>();
   completedTaskSubject = new Subject<Task[]>();
-  activeListNameSubject = new Subject<string>();
+  activeListSubject = new Subject<{}>();
   private tasks: Task[] = [];
   private completedTasks: Task[] = [];
   private userDetailsAPIResponse;
@@ -30,6 +30,8 @@ export class TaskService {
 
   // setting tasks according to current list active
   setTasks(taskResponse) {
+    this.tasks = [];
+    this.completedTasks = [];
     for (let index = 0; index < taskResponse.length; index++) {
       const task = new Task(taskResponse[index].task_id, taskResponse[index].task_name, taskResponse[index].completed_status);
       if (task.completed) {
@@ -42,7 +44,7 @@ export class TaskService {
     console.log(this.completedTasks);
     this.taskSubject.next(this.tasks);
     this.completedTaskSubject.next(this.completedTasks);
-    this.activeListNameSubject.next(this.activeList.list_name);
+    this.activeListSubject.next(this.activeList);
   }
 
   // setting user details api response
@@ -165,5 +167,22 @@ export class TaskService {
 
   updateTaskStatus(taskId: string, status: boolean) {
     return this.utilityService.updateTaskStatus(this.userService.getUser().email, this.activeList.list_id, taskId, status);
+  }
+
+  makeListActive(listId: string) {
+    this.spinnerService.showSpinner();
+    const newActiveList = this.userDetailsAPIResponse.lists_arr.find(listObj => {
+      return listObj.list_id === listId;
+    });
+    console.log('new active list obj', newActiveList);
+    this.fetchTasksFromList(this.userService.getUser().email, listId)
+      .subscribe(
+      (taskResponse: any) => {
+        this.activeList = newActiveList;
+        this.setTasks(taskResponse.tasks_arr);
+        this.spinnerService.hideSpinner();
+        console.log(taskResponse);
+        }
+      );
   }
 }

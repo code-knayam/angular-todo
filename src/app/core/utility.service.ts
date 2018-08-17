@@ -10,6 +10,8 @@ export class UtilityService {
   private ADD_TASK_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/addTaskAPI';
   private UPDATE_TASK_STATUS_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/updateTaskStatusAPI';
   private ADD_LIST_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/addListAPI';
+  private RENAME_LIST_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/renameListAPI';
+  private DELETE_LIST_API = 'https://us-central1-angulartodo-af85b.cloudfunctions.net/deleteListAPI';
 
   constructor(private http: HttpClient) {}
 
@@ -49,6 +51,19 @@ export class UtilityService {
     return this.http.get(this.ADD_LIST_API
       + '?userid=' + userId
       + '&listname=' + listName);
+  }
+
+  renameList(userId: string, listId: string, listName: string) {
+    return this.http.get(this.RENAME_LIST_API
+      + '?userid=' + userId
+      + '&listid=' + listId
+      + '&listname=' + listName);
+  }
+
+  deleteList(userId: string, listId: string) {
+    return this.http.get(this.DELETE_LIST_API
+      + '?userid=' + userId
+      + '&listid=' + listId);
   }
 
 }

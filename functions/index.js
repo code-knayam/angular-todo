@@ -219,3 +219,61 @@ exports.addListAPI = functions.https.onRequest((req, res) => {
     res.send(err);
   })
 });
+
+// Used to rename a  list
+// Uses UserId and the list details (new name and list id)
+// RETURNS JSON object containing success code, listId and msg
+exports.renameListAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var listId = req.query.listid;
+  var listName = req.query.listname;
+
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  db.collection("user-data")
+    .doc(userId)
+    .collection("lists-arr")
+    .doc(listId)
+    .update({
+      list_name: listName
+    })
+    .then(
+    (docRef) => {
+      res.send({status: 200, list_id: docRef.id, msg: "List Name Updated Successfully!"});
+      return "";
+    }
+  ).catch(err => {
+    res.send(err);
+  })
+});
+
+// Used to delete a  list
+// Uses UserId and the list details ( list id)
+// RETURNS JSON object containing success code and msg
+exports.deleteListAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var listId = req.query.listid;
+
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  db.collection("user-data")
+    .doc(userId)
+    .collection("lists-arr")
+    .doc(listId)
+    .delete()
+    .then(
+    (docRef) => {
+      res.send({status: 200, msg: "List Deleted Successfully!"});
+      return "";
+    }
+  ).catch(err => {
+    res.send(err);
+  })
+});
+

@@ -1,0 +1,17 @@
+<div class="create-list-container" *ngIf="createNewListFormFlag">
+
+  <div class="header">
+    <a class="close-btn" (click)="onCloseBtn()">
+      <i class="fas fa-times"></i>
+    </a>
+    <h3 class="heading">Create new list</h3>
+    <a class="done-btn" (click)="onSubmitCreateList()">Done</a>
+  </div>
+  <div class="create-list-form-container">
+    <form [formGroup]="createListForm" (submit)="onSubmitCreateList()">
+      <div class="form-group">
+        <input type="text" name="listName" formControlName="listName" class="form-control" placeholder="Enter list title" autocomplete="off">
+      </div>
+    </form>
+  </div>
+</div>

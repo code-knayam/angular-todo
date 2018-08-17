@@ -20,6 +20,7 @@ import { AuthService } from './auth/auth.service';
 import { UserService } from './core/user.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
+import { CreateListComponent } from './core/create-list/create-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SpinnerService } from './spinner/spinner.service';
     MenuContainerComponent,
     TaskMenuContainerComponent,
     AuthComponent,
-    SpinnerComponent ],
+    SpinnerComponent,
+    CreateListComponent ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

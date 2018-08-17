@@ -2,20 +2,25 @@ import { Subject } from 'rxjs';
 
 export class SharedService {
 
-  addTaskFormFlag = new Subject<boolean>();
-  toggleTaskMenuFlag = new Subject<boolean>();
-  toggleMenuFlag = new Subject<boolean>();
+  addTaskFormSubject = new Subject<boolean>();
+  taskMenuSubject = new Subject<boolean>();
+  menuSubject = new Subject<boolean>();
+  createNewListFormSubject = new Subject<boolean>();
 
   toggleAddTaskForm(flag: boolean) {
-    this.addTaskFormFlag.next(flag);
+    this.addTaskFormSubject.next(flag);
   }
 
   toggleTaskMenu(flag: boolean) {
-    this.toggleTaskMenuFlag.next(flag);
+    this.taskMenuSubject.next(flag);
   }
 
   toggleMenu(flag: boolean) {
-    this.toggleMenuFlag.next(flag);
+    this.menuSubject.next(flag);
+  }
+
+  toggleCreateNewListForm(flag: boolean) {
+    this.createNewListFormSubject.next(flag);
   }
 
 }

@@ -13,7 +13,7 @@ export class TaskMenuContainerComponent implements OnInit {
   constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
-    this.sharedService.toggleTaskMenuFlag.subscribe(
+    this.sharedService.taskMenuSubject.subscribe(
       (flag: boolean) => {
         this.taskMenuFlag = flag;
       }

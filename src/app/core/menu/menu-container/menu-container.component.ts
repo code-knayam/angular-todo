@@ -25,7 +25,7 @@ export class MenuContainerComponent implements OnInit {
   ngOnInit() {
     this.user = this.userService.getUser();
     this.taskService.listsSubject.subscribe(
-      (lists: []) => {
+      (lists: any) => {
         this.lists = lists;
       }
     );
@@ -34,7 +34,7 @@ export class MenuContainerComponent implements OnInit {
         this.activeListId = list.list_id;
       }
     );
-    this.sharedService.toggleMenuFlag.subscribe(
+    this.sharedService.menuSubject.subscribe(
       (flag: boolean) => {
         this.menuFlag = flag;
       }
@@ -56,6 +56,10 @@ export class MenuContainerComponent implements OnInit {
       this.taskService.makeListActive(listId);
       this.onCloseMenuBtn();
     }
+  }
+
+  onCreateNewListBtn() {
+    this.sharedService.toggleCreateNewListForm(true);
   }
 
 }

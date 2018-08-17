@@ -105,18 +105,20 @@
   border-top-left-radius: 25px;
 }
 
-.menu-container .add-new-list-btn-container {
+.menu-container .create-new-list-btn-container {
   width: 100%;
   height: 65px;
   border-bottom: 1px solid rgba(1, 1, 1, 0.075);
   padding: 10px 25px;
 }
-.menu-container .add-new-list-btn-container .add-new-list-btn {
+.menu-container .create-new-list-btn-container .create-new-list-btn {
+  width: 100%;
+  display: block;
   color: #333;
   font-size: 16px;
   line-height: 45px;
 }
-.menu-container .add-new-list-btn-container .add-new-list-btn i {
+.menu-container .create-new-list-btn-container .create-new-list-btn i {
   color: #666;
   font-size: 16px;
   margin-right: 20px;

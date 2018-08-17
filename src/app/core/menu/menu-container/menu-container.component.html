@@ -22,9 +22,9 @@
         <li class="list-item" *ngFor="let list of lists" [ngClass]="{'active-list-item': list.list_id === activeListId}" (click)="onMakeListActiveBtn(list.list_id)">{{list.list_name}}</li>
       </ul>
     </div>
-    <div class="add-new-list-btn-container">
-      <a class="add-new-list-btn">
-        <i class="fas fa-plus"></i>Add a new list
+    <div class="create-new-list-btn-container">
+      <a class="create-new-list-btn" (click)="onCreateNewListBtn()">
+        <i class="fas fa-plus"></i>Create new list
       </a>
     </div>
     <div class="close-menu-btn-container">

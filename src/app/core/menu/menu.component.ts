@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,13 +9,15 @@ import { SharedService } from '../shared.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService,
+  private router: Router) { }
 
   ngOnInit() {
   }
 
   onAddTaskBtn() {
-    this.sharedService.toggleAddTaskForm(true);
+    // this.sharedService.toggleAddTaskForm(true);
+    this.router.navigate(['addTask']);
   }
 
   onMenuToggleBtn() {

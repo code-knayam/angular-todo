@@ -4,10 +4,12 @@ import { CoreComponent } from './core/core.component';
 import { AuthComponent } from './auth/auth.component';
 import { CreateListComponent } from './core/create-list/create-list.component';
 import { EditListComponent } from './core/edit-list/edit-list.component';
+import { AddTaskComponent } from './core/add-task/add-task.component';
 
 const appRoutes: Routes = [
   {
     path: '', component: CoreComponent, children: [
+    {path: 'addTask', component: AddTaskComponent},
     {path: 'createList', component: CreateListComponent},
     {path: 'renameList', component: EditListComponent}
   ] },

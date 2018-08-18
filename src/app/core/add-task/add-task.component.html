@@ -1,6 +1,6 @@
-<div class="add-task-container" [ngClass]="{'active-task-container': showFormFlag}">
+<div class="add-task-container">
 
-  <div class="add-task-form-container" [ngClass]="{'active-form': showFormFlag}">
+  <div class="add-task-form-container">
     <form [formGroup]="addTaskForm" (submit)="onSubmitAddTask()">
       <div class="form-group">
         <input type="text" name="taskName" class="form-control" formControlName="taskName" placeholder="New Task" autocomplete="off">

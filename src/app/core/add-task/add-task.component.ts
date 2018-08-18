@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { Task } from './../task.model';
 import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -16,16 +17,12 @@ export class AddTaskComponent implements OnInit {
   showFormOptions = false;
 
   constructor(private fb: FormBuilder,
-    private taskService: TaskService, private sharedService: SharedService) {
+    private taskService: TaskService,
+    private router: Router) {
   }
 
   ngOnInit() {
     this.initForm();
-    this.sharedService.addTaskFormSubject.subscribe(
-      (showFormFlag: boolean) => {
-        this.showFormFlag = showFormFlag;
-      }
-    );
   }
 
   initForm() {
@@ -39,11 +36,12 @@ export class AddTaskComponent implements OnInit {
 
     const taskName = this.addTaskForm.value['taskName'];
     this.taskService.saveNewTask(taskName);
-    this.resetAddTaskForm();
+    this.onCloseBtn();
   }
 
   onCloseBtn() {
     this.resetAddTaskForm();
+    this.router.navigate(['']);
   }
 
   onToggleFormOptions() {
@@ -52,7 +50,6 @@ export class AddTaskComponent implements OnInit {
 
   resetAddTaskForm() {
     this.addTaskForm.reset();
-    this.sharedService.toggleAddTaskForm(false);
     this.showFormOptions = false;
   }
 }

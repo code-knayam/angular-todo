@@ -25,10 +25,10 @@
   border-radius: 4px;
   font-size: 18px;
   display: block;
-  margin: 10px 0;
+  margin: 10px auto;
   padding: 0;
   height: 50px;
-  max-width: 500px;
+  width: 90%;
 }
 .landing .get-started-btn .icon {
   display: inline-block;

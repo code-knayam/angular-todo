@@ -229,19 +229,24 @@ export class TaskService {
   deleteTaskList() {
     this.spinnerService.showSpinner();
     console.log('[TaskService] Deleting current active list ->', this.activeList);
-    this.utilityService.deleteTaskList(this.userService.getUser().email, this.activeList.list_id)
-    .subscribe(
-      (response: any) => {
-        console.log('[TaskService] DeleteTaskList ->', response);
-        if (response.status === 200) {
-          this.userDetailsAPIResponse.lists_arr = this.userDetailsAPIResponse.lists_arr.filter(listObj => {
-            return listObj.list_id !== this.activeList.list_id;
-          });
-          this.makeListActive(this.userDetailsAPIResponse.lists_arr[0].list_id);
-          this.listsSubject.next(this.userDetailsAPIResponse.lists_arr);
+    if (this.userDetailsAPIResponse.lists_arr.length !== 1) {
+      this.utilityService.deleteTaskList(this.userService.getUser().email, this.activeList.list_id)
+      .subscribe(
+        (response: any) => {
+          console.log('[TaskService] DeleteTaskList ->', response);
+          if (response.status === 200) {
+            this.userDetailsAPIResponse.lists_arr = this.userDetailsAPIResponse.lists_arr.filter(listObj => {
+              return listObj.list_id !== this.activeList.list_id;
+            });
+            this.makeListActive(this.userDetailsAPIResponse.lists_arr[0].list_id);
+            this.listsSubject.next(this.userDetailsAPIResponse.lists_arr);
+          }
+          this.spinnerService.hideSpinner();
         }
-        this.spinnerService.hideSpinner();
-      }
-    );
+      );
+    } else {
+      console.log('[TaskService] Cann\'t delete last remaining list.');
+      this.spinnerService.hideSpinner();
+    }
   }
 }

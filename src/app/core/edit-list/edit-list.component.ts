@@ -35,7 +35,7 @@ export class EditListComponent implements OnInit {
     const listName = this.editListForm.value['listName'];
     // creating new list
     if (listName !== '') {
-      // this.taskService.createNewList(listName);
+      this.taskService.renameTaskList(listName);
       // resetting form and navigating
       this.onCloseBtn();
     }

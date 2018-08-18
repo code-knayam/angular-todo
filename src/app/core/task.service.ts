@@ -249,4 +249,29 @@ export class TaskService {
       this.spinnerService.hideSpinner();
     }
   }
+
+  // Rename Task List
+  renameTaskList(newListName: string) {
+    this.spinnerService.showSpinner();
+    console.log('[TaskService] Renaming current active list to ->', newListName);
+    this.utilityService.renameTaskList(this.userService.getUser().email, this.activeList.list_id, newListName)
+      .subscribe(
+      (response: any) => {
+        console.log('[TaskService] RenameTaskList ->', response);
+        if (response.status === 200) {
+          // setting new name in active list object
+          this.activeList.list_name = newListName;
+          // updating new name in user details response
+          this.userDetailsAPIResponse.lists_arr.forEach(listObj => {
+            if (listObj.list_id === this.activeList.list_id) {
+              listObj.list_name = this.activeList.list_name;
+            }
+          });
+          this.activeListSubject.next(this.activeList);
+          this.listsSubject.next(this.userDetailsAPIResponse.lists_arr);
+        }
+        this.spinnerService.hideSpinner();
+      }
+      );
+  }
 }

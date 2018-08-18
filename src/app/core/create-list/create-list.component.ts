@@ -28,12 +28,14 @@ export class CreateListComponent implements OnInit {
   }
 
   onSubmitCreateList() {
-    console.log(this.createListForm);
+    console.log('[CreateListComponent] Create List Form ->', this.createListForm);
     const listName = this.createListForm.value['listName'];
     // creating new list
-    this.taskService.createNewList(listName);
-    // resetting form and navigating
-    this.onCloseBtn();
+    if (listName === '') {
+      this.taskService.createNewList(listName);
+      // resetting form and navigating
+      this.onCloseBtn();
+    }
   }
 
   onCloseBtn() {

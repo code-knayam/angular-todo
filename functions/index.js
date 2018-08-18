@@ -167,6 +167,7 @@ exports.addTaskAPI = functions.https.onRequest((req, res) => {
   var userId = req.query.userid;
   var listId = req.query.listid;
   var taskName = req.query.taskname;
+  var taskCreationDate = new Date();
 
   res.header("Content-Type", "application/json");
   res.header("Access-Control-Allow-Origin", "*");
@@ -180,11 +181,11 @@ exports.addTaskAPI = functions.https.onRequest((req, res) => {
     .add({
       task_name: taskName,
       completed_status: false,
-      date_created: new Date()
+      date_created: taskCreationDate
     })
     .then(
     (docRef) => {
-      res.send({status: 200, task_id: docRef.id, msg: "Task Added Successfully!"});
+      res.send({status: 200, task_id: docRef.id, date_created: taskCreationDate, msg: "Task Added Successfully!"});
       return "";
     }
   ).catch(err => {

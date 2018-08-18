@@ -4,10 +4,10 @@ export class Task {
   completed: boolean;
   dateCreated: Date;
 
-  constructor(id: string, name: string, completed: boolean) {
+  constructor(id: string, name: string, completed: boolean, dateCreated: Date) {
     this.id = id;
     this.name = name;
     this.completed = completed;
-    this.dateCreated = new Date();
+    this.dateCreated = dateCreated;
   }
  }

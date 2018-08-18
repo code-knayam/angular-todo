@@ -2,7 +2,7 @@
   <div class="task-menu-btn-container"  [ngClass]="{'active-task-menu-btn-container': taskMenuFlag}">
     <ul>
       <li>
-        <a class="menu-btn rename-list-btn">Rename list</a>
+        <a class="menu-btn rename-list-btn" (click)="onRenameList()">Rename list</a>
       </li>
       <li>
         <a class="menu-btn delete-list-btn" (click)="onDeleteList()">Delete list</a>

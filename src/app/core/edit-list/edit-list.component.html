@@ -1,0 +1,17 @@
+<div class="edit-list-container">
+
+    <div class="header">
+      <a class="close-btn" (click)="onCloseBtn()">
+        <i class="fas fa-times"></i>
+      </a>
+      <h3 class="heading">Rename list</h3>
+      <button class="done-btn" (click)="onSubmitEditList()" [disabled]="editListForm.invalid">Done</button>
+    </div>
+    <div class="edit-list-form-container">
+      <form [formGroup]="editListForm" (submit)="onSubmitEditList()">
+        <div class="form-group">
+          <input type="text" name="listName" formControlName="listName" class="form-control" placeholder="Enter list title" autocomplete="off">
+        </div>
+      </form>
+    </div>
+  </div>

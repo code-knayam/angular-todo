@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../shared.service';
 import { TaskService } from '../../task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-menu-container',
@@ -11,7 +12,9 @@ export class TaskMenuContainerComponent implements OnInit {
 
   taskMenuFlag: boolean;
 
-  constructor(private sharedService: SharedService, private taskService: TaskService) { }
+  constructor(private sharedService: SharedService,
+    private taskService: TaskService,
+    private router: Router) { }
 
   ngOnInit() {
     this.sharedService.taskMenuSubject.subscribe(
@@ -28,6 +31,11 @@ export class TaskMenuContainerComponent implements OnInit {
   onDeleteList() {
     this.taskService.deleteTaskList();
     this.onCloseTaskMenu();
+  }
+
+  onRenameList() {
+    this.onCloseTaskMenu();
+    this.router.navigate(['/renameList']);
   }
 
 }

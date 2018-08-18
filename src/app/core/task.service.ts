@@ -38,7 +38,8 @@ export class TaskService {
       const task = new Task(taskResponse[index].task_id,
         taskResponse[index].task_name,
         taskResponse[index].completed_status,
-        taskResponse[index].date_created);
+        taskResponse[index].date_created,
+        taskResponse[index].date_completed);
       // seggregating task as completed and pending
       if (task.completed) {
         this.completedTasks.push(task);
@@ -71,7 +72,7 @@ export class TaskService {
         (response: any) => {
           if (response.status === 200) {
             console.log('[TaskService] Adding new task ->', response);
-            const newTask = new Task(response.task_id, taskName, false, response.date_created);
+            const newTask = new Task(response.task_id, taskName, false, response.date_created, null);
             this.tasks.unshift(newTask);
             this.taskSubject.next(this.tasks);
           } else {

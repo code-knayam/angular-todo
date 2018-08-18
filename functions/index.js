@@ -136,6 +136,10 @@ exports.updateTaskStatusAPI = functions.https.onRequest((req, res) => {
   var listId = req.query.listid;
   var taskId = req.query.taskid;
   var status = (req.query.status === 'true');
+  var dateCompleted = null;
+  if (status) {
+    dateCompleted = new Date();
+  }
 
   res.header("Content-Type", "application/json");
   res.header("Access-Control-Allow-Origin", "*");
@@ -148,10 +152,11 @@ exports.updateTaskStatusAPI = functions.https.onRequest((req, res) => {
     .collection("tasks-arr")
     .doc(taskId)
     .update({
-      completed_status: status
+      completed_status: status,
+      date_completed: dateCompleted
     }).then(
       () => {
-        res.send({ status: 200, msg: "Tasks Updated Successfully!" });
+        res.send({ status: 200, date_completed: dateCompleted, msg: "Tasks Updated Successfully!" });
         return "";
       }
     ).catch(err => {
@@ -168,6 +173,7 @@ exports.addTaskAPI = functions.https.onRequest((req, res) => {
   var listId = req.query.listid;
   var taskName = req.query.taskname;
   var taskCreationDate = new Date();
+  var dateCompleted = null;
 
   res.header("Content-Type", "application/json");
   res.header("Access-Control-Allow-Origin", "*");
@@ -181,7 +187,8 @@ exports.addTaskAPI = functions.https.onRequest((req, res) => {
     .add({
       task_name: taskName,
       completed_status: false,
-      date_created: taskCreationDate
+      date_created: taskCreationDate,
+      date_completed: dateCompleted
     })
     .then(
     (docRef) => {

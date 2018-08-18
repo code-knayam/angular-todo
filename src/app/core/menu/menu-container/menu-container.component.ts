@@ -4,6 +4,7 @@ import { UserService } from '../../user.service';
 import { User } from '../../user.model';
 import { TaskService } from '../../task.service';
 import { AuthService } from '../../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-container',
@@ -20,7 +21,8 @@ export class MenuContainerComponent implements OnInit {
   constructor(private sharedService: SharedService,
     private userService: UserService,
     private taskService: TaskService,
-  private authService: AuthService) { }
+    private authService: AuthService,
+  private router: Router) { }
 
   ngOnInit() {
     this.user = this.userService.getUser();
@@ -59,7 +61,7 @@ export class MenuContainerComponent implements OnInit {
   }
 
   onCreateNewListBtn() {
-    this.sharedService.toggleCreateNewListForm(true);
+    this.router.navigate(['createList']);
     this.onCloseMenuBtn();
   }
 

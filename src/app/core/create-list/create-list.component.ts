@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SharedService } from '../shared.service';
 import { TaskService } from '../task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-list',
@@ -13,14 +13,11 @@ export class CreateListComponent implements OnInit {
   createListForm: FormGroup;
   createNewListFormFlag: boolean;
 
-  constructor(private fb: FormBuilder, private taskService: TaskService, private sharedService: SharedService) { }
+  constructor(private fb: FormBuilder,
+    private taskService: TaskService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.sharedService.createNewListFormSubject.subscribe(
-      (flag: boolean) => {
-        this.createNewListFormFlag = flag;
-      }
-    );
     this.initForm();
   }
 
@@ -35,16 +32,14 @@ export class CreateListComponent implements OnInit {
     const listName = this.createListForm.value['listName'];
     // creating new list
     this.taskService.createNewList(listName);
-    // closing form container
-    this.sharedService.toggleCreateNewListForm(false);
-    this.resetCreateListForm();
+    // resetting form and navigating
+    this.onCloseBtn();
   }
 
   onCloseBtn() {
-    // resetting form and closing all menu and container
+    // resetting form and navigating to home page
     this.resetCreateListForm();
-    this.sharedService.toggleCreateNewListForm(false);
-    this.sharedService.toggleMenu(false);
+    this.router.navigate(['']);
   }
 
   resetCreateListForm() {

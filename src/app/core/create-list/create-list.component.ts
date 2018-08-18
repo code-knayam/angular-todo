@@ -31,7 +31,7 @@ export class CreateListComponent implements OnInit {
     console.log('[CreateListComponent] Create List Form ->', this.createListForm);
     const listName = this.createListForm.value['listName'];
     // creating new list
-    if (listName === '') {
+    if (listName !== '') {
       this.taskService.createNewList(listName);
       // resetting form and navigating
       this.onCloseBtn();

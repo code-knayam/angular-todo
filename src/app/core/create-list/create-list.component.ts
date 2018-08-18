@@ -33,13 +33,15 @@ export class CreateListComponent implements OnInit {
   onSubmitCreateList() {
     console.log(this.createListForm);
     const listName = this.createListForm.value['listName'];
+    // creating new list
     this.taskService.createNewList(listName);
+    // closing form container
     this.sharedService.toggleCreateNewListForm(false);
-    this.sharedService.toggleMenu(false);
     this.resetCreateListForm();
   }
 
   onCloseBtn() {
+    // resetting form and closing all menu and container
     this.resetCreateListForm();
     this.sharedService.toggleCreateNewListForm(false);
     this.sharedService.toggleMenu(false);

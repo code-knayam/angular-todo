@@ -35,6 +35,7 @@ export class TaskListComponent implements OnInit {
   }
 
   onToggleCompletedTask() {
+    console.log('[TaskListComponent] Toggling Completed Task Flag');
     this.showCompletedTaskFlag = !this.showCompletedTaskFlag;
   }
 

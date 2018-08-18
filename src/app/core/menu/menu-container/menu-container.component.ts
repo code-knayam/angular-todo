@@ -51,7 +51,7 @@ export class MenuContainerComponent implements OnInit {
   }
 
   onMakeListActiveBtn(listId: string) {
-    console.log('Make list active with Id', listId);
+    // Making list active if its not active one
     if (listId !== this.activeListId) {
       this.taskService.makeListActive(listId);
       this.onCloseMenuBtn();
@@ -60,6 +60,7 @@ export class MenuContainerComponent implements OnInit {
 
   onCreateNewListBtn() {
     this.sharedService.toggleCreateNewListForm(true);
+    this.onCloseMenuBtn();
   }
 
 }

@@ -21,14 +21,19 @@ export class CoreComponent implements OnInit {
 
   ngOnInit() {
     this.spinnerService.showSpinner();
+
+    // check if user logged in otherwise redirect to auth page
     if (!this.authService.isUserLoggedIn()) {
       this.spinnerService.hideSpinner();
       this.router.navigate(['/auth']);
     } else {
+      // if user logged in, setting up proper responses
       const user = this.userService.getUser();
       this.userService.initApp().subscribe(
         (response) => {
+          // setting user details response
           this.taskService.setUserDetailsAPIResponse(response);
+          // fetching task for list and setting them
           this.taskService.fetchTasksFromList(user.email, this.taskService.activeList.list_id)
           .subscribe(
             (taskResponse: any) => {

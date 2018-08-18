@@ -120,7 +120,7 @@ export class TaskService {
             return false;
           }
         }
-    );
+      );
     // fallback return to false to depict pending task
     return false;
   }
@@ -160,7 +160,7 @@ export class TaskService {
             return true;
           }
         }
-    );
+      );
     // fallback return to true to depict completed task
     return true;
   }
@@ -177,11 +177,11 @@ export class TaskService {
     console.log('new active list obj', newActiveList);
     this.fetchTasksFromList(this.userService.getUser().email, listId)
       .subscribe(
-      (taskResponse: any) => {
-        this.activeList = newActiveList;
-        this.setTasks(taskResponse.tasks_arr);
-        this.spinnerService.hideSpinner();
-        console.log(taskResponse);
+        (taskResponse: any) => {
+          this.activeList = newActiveList;
+          this.setTasks(taskResponse.tasks_arr);
+          this.spinnerService.hideSpinner();
+          console.log(taskResponse);
         }
       );
   }
@@ -190,20 +190,38 @@ export class TaskService {
     this.spinnerService.showSpinner();
     this.utilityService.addNewList(this.userService.getUser().email, listName)
       .subscribe(
-      (response: any) => {
-        if (response.status === 200) {
-          console.log(response.msg);
-          const newListId = response.list_id;
-          this.userDetailsAPIResponse.lists_arr.push({
-            list_id: newListId,
-            list_name: listName
-          });
-          console.log(this.userDetailsAPIResponse);
-          this.makeListActive(newListId);
-          this.listsSubject.next(this.userDetailsAPIResponse.lists_arr)
-          this.spinnerService.hideSpinner();
+        (response: any) => {
+          if (response.status === 200) {
+            console.log(response.msg);
+            const newListId = response.list_id;
+            this.userDetailsAPIResponse.lists_arr.push({
+              list_id: newListId,
+              list_name: listName
+            });
+            console.log(this.userDetailsAPIResponse);
+            this.makeListActive(newListId);
+            this.listsSubject.next(this.userDetailsAPIResponse.lists_arr);
+            this.spinnerService.hideSpinner();
           }
         }
       );
+  }
+
+  deleteTaskList() {
+    this.spinnerService.showSpinner();
+    this.utilityService.deleteTaskList(this.userService.getUser().email, this.activeList.list_id)
+    .subscribe(
+      (response: any) => {
+        console.log('[TaskService] DeleteTaskList ->', response);
+        if (response.status === 200) {
+          this.userDetailsAPIResponse.lists_arr = this.userDetailsAPIResponse.lists_arr.filter(listObj => {
+            return listObj.list_id !== this.activeList.list_id;
+          });
+          this.makeListActive(this.userDetailsAPIResponse.lists_arr[0].list_id);
+          this.listsSubject.next(this.userDetailsAPIResponse.lists_arr);
+        }
+        this.spinnerService.hideSpinner();
+      }
+    );
   }
 }

@@ -18,7 +18,6 @@ export class SortPipe implements PipeTransform {
         }
       }
     );
-    console.log('post sort', tasks);
     return tasks;
   }
 

@@ -60,6 +60,7 @@ export class AuthService {
 
   // Saving id and user detail in local storage
   saveUserDataAndTokenInLocalStorage(idToken, newUser) {
+    this.resetLocalStorage();
     localStorage.setItem(CONSTANTS.USER_ID_TOKEN_LOCAL_STORAGE_KEY, idToken);
     localStorage.setItem(CONSTANTS.USER_DETAILS_LOCAL_STORAGE_KEY, JSON.stringify(newUser));
   }

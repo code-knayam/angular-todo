@@ -34,6 +34,8 @@
   border-top: 1px solid rgba(1, 1, 1, 0.075);
 }
 .completed-task-container .completed-task-heading a {
+  display: block;
+  width: 100%;
   font-size: 17px;
   line-height: 50px;
   color: #444;

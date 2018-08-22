@@ -288,7 +288,7 @@ exports.deleteListAPI = functions.https.onRequest((req, res) => {
 // Used to delete a task
 // Uses UserId and the list details ( list id) and task id
 // RETURNS JSON object containing success code and msg
-exports.deleteListAPI = functions.https.onRequest((req, res) => {
+exports.deleteTaskAPI = functions.https.onRequest((req, res) => {
   var db = admin.firestore();
   var userId = req.query.userid;
   var listId = req.query.listid;
@@ -302,12 +302,44 @@ exports.deleteListAPI = functions.https.onRequest((req, res) => {
     .doc(userId)
     .collection("lists-arr")
     .doc(listId)
-    .collection("tasks_arr")
+    .collection("tasks-arr")
     .doc(taskId)
     .delete()
     .then(
     (docRef) => {
       res.send({status: 200, msg: "Task Deleted Successfully!"});
+      return "";
+    }
+  ).catch(err => {
+    res.send(err);
+  })
+});
+
+exports.updateTaskAPI = functions.https.onRequest((req, res) => {
+  var db = admin.firestore();
+  var userId = req.query.userid;
+  var listId = req.query.listid;
+  var taskId = req.query.taskid;
+  var taskName = req.query.taskname;
+  var taskCreationDate = new Date();
+
+  res.header("Content-Type", "application/json");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  db.collection("user-data")
+    .doc(userId)
+    .collection("lists-arr")
+    .doc(listId)
+    .collection("tasks_arr")
+    .doc(taskId)
+    .update({
+      task_name: taskName,
+      date_created: taskCreationDate
+    })
+    .then(
+    (docRef) => {
+      res.send({status: 200, task_id: docRef.id, date_created: taskCreationDate, msg: "Task Updated Successfully!"});
       return "";
     }
   ).catch(err => {

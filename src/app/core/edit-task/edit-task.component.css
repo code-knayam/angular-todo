@@ -1,0 +1,69 @@
+.clear {
+  clear: both;
+}
+.edit-task-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #eee;
+  z-index: 999;
+}
+.edit-task-container .header {
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.1);
+}
+.edit-task-container .header .btn-container {
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  color: #888;
+  line-height: 60px;
+  margin: 0 25px;
+}
+.edit-task-container .header .delete-btn-container {
+  float: left;
+  text-align: left;
+}
+.edit-task-container .header .save-btn-container {
+  float: right;
+  text-align: right;
+}
+.edit-task-container .header .save-btn-container .save-btn {
+  color: #888;
+}
+.edit-task-container .header .save-btn-container .save-btn.save-btn-enabled {
+  color: rgb(111, 103, 255);
+}
+.edit-task-container .edit-task-form-container {
+  height: 50px;
+  background: #fff;
+  margin: 0;
+}
+.edit-task-container .edit-task-form-container .form-control {
+  height: 50px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding-left: 25px;
+  font-size: 17px;
+}
+
+.close-btn-container {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 50px;
+}
+.close-btn-container .close-btn {
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+  line-height: 50px;
+  font-size: 35px;
+  color: rgb(111, 103, 255);
+  /* padding: 10px 15px; */
+  border-radius: 50px;
+}

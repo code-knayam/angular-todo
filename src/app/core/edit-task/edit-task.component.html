@@ -1,0 +1,28 @@
+<div class="edit-task-container">
+
+  <div class="header">
+    <div class="btn-container delete-btn-container">
+      <a class="delete-btn" (click)="onDeleteTaskBtn()">
+        <i class="fas fa-trash"></i>
+      </a>
+    </div>
+    <div class="btn-container save-btn-container">
+      <button class="save-btn" [ngClass]="{'save-btn-enabled': editTaskForm.valid}" [disabled]="editTaskForm.invalid" (click)="onSubmitEditTask()">
+        <i class="fas fa-check"></i>
+      </button>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="edit-task-form-container">
+    <form [formGroup]="editTaskForm" (submit)="onSubmitEditTask()">
+      <div class="form-group">
+        <input type="text" name="taskName" formControlName="taskName" class="form-control" placeholder="Enter task" autocomplete="off">
+      </div>
+    </form>
+  </div>
+  <div class="close-btn-container">
+    <a class="close-btn" (click)="onCloseBtn()">
+      <i class="fas fa-times-circle"></i>
+    </a>
+  </div>
+</div>

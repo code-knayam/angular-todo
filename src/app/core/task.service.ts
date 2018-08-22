@@ -16,6 +16,7 @@ export class TaskService {
   private tasks: Task[] = [];
   private completedTasks: Task[] = [];
   private userDetailsAPIResponse;
+  private editableTask: Task;
   activeList;
 
 
@@ -277,5 +278,13 @@ export class TaskService {
         this.spinnerService.hideSpinner();
       }
       );
+  }
+
+  setTaskToBeEdited(task: Task) {
+    this.editableTask = task;
+  }
+
+  getTaskToBeEdited() {
+    return this.editableTask;
   }
 }

@@ -23,6 +23,7 @@ import { SpinnerService } from './spinner/spinner.service';
 import { CreateListComponent } from './core/create-list/create-list.component';
 import { EditListComponent } from './core/edit-list/edit-list.component';
 import { SortPipe } from './core/sort.pipe';
+import { EditTaskComponent } from './core/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SortPipe } from './core/sort.pipe';
     SpinnerComponent,
     CreateListComponent,
     EditListComponent,
-    SortPipe ],
+    SortPipe,
+    EditTaskComponent ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

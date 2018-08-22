@@ -39,8 +39,11 @@
   line-height: 60px;
   margin-right: 5px;
   font-size: 18px;
-  color: rgb(111, 103, 255);
   cursor: pointer;
+  color: #888;
+}
+.create-list-container .header .done-btn.done-btn-enabled {
+  color: rgb(111, 103, 255);
 }
 .create-list-container .create-list-form-container {
   height: 50px;

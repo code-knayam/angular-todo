@@ -5,7 +5,7 @@
       <i class="fas fa-times"></i>
     </a>
     <h3 class="heading">Create new list</h3>
-    <button class="done-btn" (click)="onSubmitCreateList()" [disabled]="createListForm.invalid">Done</button>
+    <button class="done-btn" [ngClass]="{'done-btn-enabled': createListForm.valid}" (click)="onSubmitCreateList()" [disabled]="createListForm.invalid">Done</button>
   </div>
   <div class="create-list-form-container">
     <form [formGroup]="createListForm" (submit)="onSubmitCreateList()">

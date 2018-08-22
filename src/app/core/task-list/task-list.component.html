@@ -12,6 +12,7 @@
         <i class="fas fa-angle-down" [ngClass]="{'active-completed-task-container-icon': completedTasks.length !== 0 && showCompletedTaskFlag}"></i>
       </a>
     </div>
+    <div class="clear"></div>
     <div class="completed-tasks">
       <ng-container *ngFor="let task of (completedTasks | sort : 'dateCompleted')">
         <app-task-list-item [task]="task" *ngIf="showCompletedTaskFlag"></app-task-list-item>

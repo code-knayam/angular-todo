@@ -1,16 +1,13 @@
 <div class="edit-task-container">
 
   <div class="header">
-    <div class="btn-container delete-btn-container">
-      <a class="delete-btn" (click)="onDeleteTaskBtn()">
-        <i class="fas fa-trash"></i>
-      </a>
-    </div>
-    <div class="btn-container save-btn-container">
-      <button class="save-btn" [ngClass]="{'save-btn-enabled': editTaskForm.valid}" [disabled]="editTaskForm.invalid" (click)="onSubmitEditTask()">
-        <i class="fas fa-check"></i>
-      </button>
-    </div>
+    <a class="delete-btn" (click)="onDeleteTaskBtn()">
+      <i class="fas fa-trash"></i>
+    </a>
+    <h3 class="heading">Edit task</h3>
+    <button class="save-btn" [ngClass]="{'save-btn-enabled': editTaskForm.valid}" [disabled]="editTaskForm.invalid" (click)="onSubmitEditTask()">
+      <i class="fas fa-check"></i>
+    </button>
     <div class="clear"></div>
   </div>
   <div class="edit-task-form-container">

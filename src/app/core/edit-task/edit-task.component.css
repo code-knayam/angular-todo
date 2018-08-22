@@ -15,26 +15,37 @@
   background: #fff;
   border-bottom: 1px solid rgba(1, 1, 1, 0.1);
 }
-.edit-task-container .header .btn-container {
-  width: 60px;
-  height: 60px;
-  font-size: 20px;
-  color: #888;
-  line-height: 60px;
-  margin: 0 25px;
-}
-.edit-task-container .header .delete-btn-container {
+.edit-task-container .header .delete-btn {
   float: left;
+  height: 60px;
+  width: 60px;
+  color: #666;
+  margin: auto;
+  line-height: 60px;
+  font-size: 16px;
+  font-weight: lighter;
+  text-align: center;
+}
+.edit-task-container .header .heading {
+  float: left;
+  line-height: 60px;
+  color: #333;
+  margin: 0 5px;
+  font-weight: normal;
+  font-size: 26px;
   text-align: left;
 }
-.edit-task-container .header .save-btn-container {
+.edit-task-container .header .save-btn {
   float: right;
-  text-align: right;
-}
-.edit-task-container .header .save-btn-container .save-btn {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  margin-right: 5px;
+  font-size: 18px;
+  cursor: pointer;
   color: #888;
 }
-.edit-task-container .header .save-btn-container .save-btn.save-btn-enabled {
+.edit-task-container .header .save-btn.save-btn-enabled {
   color: rgb(111, 103, 255);
 }
 .edit-task-container .edit-task-form-container {

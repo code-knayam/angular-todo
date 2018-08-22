@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class EditListComponent implements OnInit {
 
   editListForm: FormGroup;
-  editNewListFormFlag: boolean;
 
   constructor(
     private fb: FormBuilder,

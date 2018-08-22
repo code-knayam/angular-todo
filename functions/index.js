@@ -331,7 +331,7 @@ exports.updateTaskAPI = functions.https.onRequest((req, res) => {
     .doc(userId)
     .collection("lists-arr")
     .doc(listId)
-    .collection("tasks_arr")
+    .collection("tasks-arr")
     .doc(taskId)
     .update({
       task_name: taskName,

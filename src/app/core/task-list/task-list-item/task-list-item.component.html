@@ -4,6 +4,6 @@
     <i class="fas fa-check" *ngIf="task.completed"  (click)="onToggleTaskToPending()"></i>
   </div>
   <div class="task-description">
-    <p class="task-name">{{task.name}}</p>
+    <a class="task-name" [routerLink]="['/editTask']">{{task.name}}</a>
   </div>
 </div>

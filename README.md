@@ -1,6 +1,13 @@
 # AngularTodo
 
-ToDo Progressive Web App using Angular 6.
+• Developed SPA using Angular 6 to built a ToDo app.
+• Users can login with their Google account to add their pending tasks and categorise
+them into various lists.
+• Made use of Google Firebase for hosting purposes. Also used Google cloud
+functions to manage the server side code on Node JS.
+• Made use of Google Firestore as database to store user info and details.
+• Made user of Google Login APIs to authenticate users.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 

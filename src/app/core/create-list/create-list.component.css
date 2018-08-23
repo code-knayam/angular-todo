@@ -41,6 +41,8 @@
   font-size: 18px;
   cursor: pointer;
   color: #888;
+  background: none;
+  border: none;
 }
 .create-list-container .header .done-btn.done-btn-enabled {
   color: rgb(111, 103, 255);

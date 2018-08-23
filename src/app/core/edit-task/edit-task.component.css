@@ -44,6 +44,8 @@
   font-size: 18px;
   cursor: pointer;
   color: #888;
+  background: none;
+  border: none;
 }
 .edit-task-container .header .save-btn.save-btn-enabled {
   color: rgb(111, 103, 255);

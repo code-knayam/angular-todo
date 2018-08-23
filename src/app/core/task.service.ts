@@ -316,4 +316,37 @@ export class TaskService {
         }
       );
   }
+
+  updateTaskName(task: Task) {
+    this.spinnerService.showSpinner();
+    console.log('[TaskService] Updating Task ->', task);
+    this.utilityService.updateTask(this.userService.getUser().email, this.activeList.list_id, task.id, task.name)
+      .subscribe(
+      (response: any) => {
+        console.log('[TaskService] UpdateTask -> ', response);
+        if (response.status === 200) {
+          if (task.completed) {
+            // modifying in completed task array
+            this.completedTasks.forEach(taskObj => {
+              if (taskObj.id === task.id) {
+                taskObj.name = task.name;
+                taskObj.dateCreated = response.date_created;
+              }
+            });
+            this.completedTaskSubject.next(this.completedTasks);
+          } else {
+            // modifying pending task array
+            this.tasks.forEach(taskObj => {
+              if (taskObj.id === task.id) {
+                taskObj.name = task.name;
+                taskObj.dateCreated = response.date_created;
+              }
+            });
+            this.taskSubject.next(this.tasks);
+          }
+        }
+        this.spinnerService.hideSpinner();
+      }
+      );
+  }
 }

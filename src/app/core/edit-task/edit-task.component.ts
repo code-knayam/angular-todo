@@ -36,6 +36,10 @@ export class EditTaskComponent implements OnInit {
   onSubmitEditTask() {
     console.log('[EditTaskComponent] Edit Task Form -> ', this.editTaskForm);
     const taskName = this.editTaskForm.value['taskName'];
+    if (this.task.name !== taskName) {
+      this.task.name = taskName;
+      this.taskService.updateTaskName(this.task);
+    }
     this.onCloseBtn();
   }
 

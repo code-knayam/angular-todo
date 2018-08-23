@@ -20,7 +20,11 @@ export class EditTaskComponent implements OnInit {
 
   ngOnInit() {
     this.task = this.taskService.getTaskToBeEdited();
-    this.initForm();
+    if (this.task === null) {
+      this.router.navigate(['']);
+    } else {
+      this.initForm();
+    }
   }
 
   initForm() {
@@ -32,10 +36,12 @@ export class EditTaskComponent implements OnInit {
   onSubmitEditTask() {
     console.log('[EditTaskComponent] Edit Task Form -> ', this.editTaskForm);
     const taskName = this.editTaskForm.value['taskName'];
+    this.onCloseBtn();
   }
 
   onDeleteTaskBtn() {
-
+    this.taskService.deleteTask(this.task);
+    this.onCloseBtn();
   }
 
   onCloseBtn() {

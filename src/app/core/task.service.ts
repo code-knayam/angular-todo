@@ -16,7 +16,7 @@ export class TaskService {
   private tasks: Task[] = [];
   private completedTasks: Task[] = [];
   private userDetailsAPIResponse;
-  private editableTask: Task;
+  private editableTask: Task = null;
   activeList;
 
 
@@ -286,5 +286,34 @@ export class TaskService {
 
   getTaskToBeEdited() {
     return this.editableTask;
+  }
+
+  // Delete a task
+  deleteTask(task: Task) {
+    this.spinnerService.showSpinner();
+    console.log('[TaskService] Deleting Task ->', task);
+    this.utilityService.deleteTask(this.userService.getUser().email, this.activeList.list_id, task.id)
+      .subscribe(
+      (response: any) => {
+        console.log('[TaskService] DeleteTask -> ', response);
+        if (response.status === 200) {
+          if (task.completed) {
+            // remove task from completed task array
+            this.completedTasks = this.completedTasks.filter(taskObj => {
+              return taskObj.id !== task.id;
+            });
+            this.completedTaskSubject.next(this.completedTasks);
+          } else {
+            // remove task from pending task array
+            this.tasks = this.tasks.filter(taskObj => {
+              return taskObj.id !== task.id;
+            });
+            this.taskSubject.next(this.tasks);
+          }
+
+        }
+        this.spinnerService.hideSpinner();
+        }
+      );
   }
 }
